@@ -12,9 +12,9 @@ O fluxo futuro obrigatório é fonte → registro bruto → validação → norm
 
 ## Estado atual
 
-Fase 0 publicada como `v0.1.0`. A Fase 1 foi publicada nas versões `v0.2.0` a `v0.2.2`. A estrutura organizacional saiu em `v0.3.0`, a camada bruta KBF em `v0.3.1`, pessoas/vínculos em `v0.4.0`, a folha mensal em `v0.5.0` e a revisão auditável de identidades em `v0.6.0`, após CI aprovado no commit `20674fd`. A Fase 2 está concluída. O cadastro público está desabilitado e o login é reservado ao painel administrativo.
+Fase 0 publicada como `v0.1.0`. A Fase 1 foi publicada nas versões `v0.2.0` a `v0.2.2`. A estrutura organizacional saiu em `v0.3.0`, a camada bruta KBF em `v0.3.1`, pessoas/vínculos em `v0.4.0`, a folha mensal em `v0.5.0` e a revisão auditável de identidades em `v0.6.0`. A Fase 2 está concluída. A home da Fase 3 está conectada ao banco e aguarda publicação. O cadastro público está desabilitado e o login é reservado ao painel administrativo.
 
-Evidências atuais: 55 testes PHP com 252 asserções, Pint, ESLint, `vue-tsc`, build Vite, Composer audit e npm audit passaram. Todas as migrations passaram no MySQL 8.4.7 e os cinco agendamentos estão registrados. A geração real criou 42 candidatos para 42 grupos de nomes repetidos. Testes comprovam autenticação obrigatória, decisão auditável, idempotência e ausência de fusão. As execuções KBF anteriores preservam 1.628 vínculos e 1.556 pagamentos de julho/2026. Docker ainda não está instalado e o Compose continua sem execução comprovada.
+Evidências atuais: 56 testes PHP com 276 asserções, Pint, ESLint, `vue-tsc`, build Vite, Composer audit e npm audit passaram. A home foi validada no Edge em `http://localhost/acorda/public/`: mostrou 12 órgãos, 1.628 vínculos, 203 cargos, 1.556 pagamentos, competência 07/2026 e R$ 4.190.802,17 líquidos; o aviso inicial não apareceu e o link de órgãos preservou o subdiretório. Todas as migrations passaram no MySQL 8.4.7. Docker ainda não está instalado e o Compose continua sem execução comprovada.
 
 ## Restrições
 
@@ -25,4 +25,4 @@ Evidências atuais: 55 testes PHP com 252 asserções, Pint, ESLint, `vue-tsc`, 
 
 ## Próximo passo
 
-Próximo passo após fechar a Fase 2: iniciar a Fase 3 com busca pública de pessoas e perfis com proveniência e histórico de remuneração.
+Próximo passo da Fase 3: busca pública de pessoas e perfis com proveniência e histórico de remuneração.

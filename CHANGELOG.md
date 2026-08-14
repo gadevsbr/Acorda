@@ -4,6 +4,18 @@ O formato segue Keep a Changelog e o projeto usa versionamento semântico.
 
 ## [Unreleased]
 
+## [0.6.1] — 2026-08-14
+
+### Fixed
+
+- Home deixou de exibir o aviso inicial desatualizado e passou a calcular contagens reais do banco.
+- Links públicos respeitam a instalação em subdiretório do Wamp, incluindo `/acorda/public`.
+
+### Added
+
+- Resumo público de órgãos, vínculos, cargos, pagamentos, competência, total líquido e saúde das fontes.
+- Estado honesto e separado para instalações ainda vazias.
+
 ## [0.6.0] — 2026-08-14
 
 ### Added

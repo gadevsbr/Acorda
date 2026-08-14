@@ -1,17 +1,13 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\IdentityCandidateController;
 use App\Http\Controllers\OrganizationController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SourceController;
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
 
-Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-    ]);
-});
+Route::get('/', HomeController::class)->name('home');
 
 Route::get('/fontes', [SourceController::class, 'index'])->name('sources.index');
 Route::get('/orgaos', [OrganizationController::class, 'index'])->name('organizations.index');

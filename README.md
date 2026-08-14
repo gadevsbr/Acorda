@@ -6,6 +6,8 @@ Plataforma independente de transparência pública que torna dados oficiais de A
 
 A Fase 1 possui o núcleo auditável de ingestão. A Fase 2 está completa com 12 órgãos, 1.628 vínculos ativos, 1.556 pagamentos de julho/2026 e 42 candidatos revisáveis de identidade. Os vínculos estão normalizados em 1.628 identidades conservadoras por matrícula e 203 cargos/funções. Ainda não há perfis públicos de pessoas. Consulte [ROADMAP.md](ROADMAP.md).
 
+A home calcula suas contagens diretamente do banco e mostra apenas conjuntos efetivamente disponíveis. Em uma instalação vazia, orienta a executar migrations e coletores em vez de exibir números simulados.
+
 ## Stack
 
 - PHP 8.3+ e Laravel 13;

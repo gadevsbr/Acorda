@@ -21,5 +21,8 @@ As conexões MySQL/MariaDB fixam o engine `InnoDB`. Isso garante transações e 
 - `raw_source_records`: payload bruto, origem, datas, metadados HTTP, checksum e validação.
 - `source_alerts`: tipo, severidade, ocorrências, resolução e estado da notificação externa.
 - `organizations`: órgão atual, slug, tipo, contatos, responsável textual, hierarquia e referência ao registro bruto.
+- `people`: identidade conservadora de fonte, vinculada à matrícula e ao registro bruto mais recente;
+- `positions`: catálogo municipal deduplicado somente por nome normalizado exato;
+- `employments`: vínculo por matrícula, cargo, admissão, regime, centro de custo, jornada e estado corrente observado.
 
 A unicidade de `raw_source_records` é `(source_id, external_id, checksum)`: repetir o mesmo payload é idempotente; mudar conteúdo cria uma revisão auditável. Exclusões de fonte são restritas quando há histórico bruto.

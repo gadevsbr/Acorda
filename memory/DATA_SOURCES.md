@@ -33,8 +33,8 @@ Observações: a documentação oficial lista os campos necessários. A resposta
 - Formato observado: aplicação Webrun com sessão, execução de fluxo e grade estruturada
 - Último teste: 2026-08-14, HTTP 200, 1.628 vínculos ativos, sete campos por linha
 - Campos: matrícula, nome, admissão, centro de custo, regime, cargo/função e jornada mensal
-- Status: operacional; servidores ativos integrados em camada bruta
-- Observações: é o destino atual publicado pelo site oficial da Prefeitura. A fonte esteve temporariamente indisponível e depois voltou a responder. O cliente confere o total declarado e interrompe a coleta se o contrato da grade mudar. Remuneração (`formID=278`) ainda não foi integrada.
+- Status: operacional; servidores ativos preservados e normalizados
+- Observações: é o destino atual publicado pelo site oficial da Prefeitura. A fonte esteve temporariamente indisponível e depois voltou a responder. O cliente confere o total declarado e interrompe a coleta se o contrato da grade mudar. Matrícula é identidade do vínculo, não prova de identidade civil. Remuneração (`formID=278`) ainda não foi integrada.
 
 ## SoftHaas — Folha legada
 

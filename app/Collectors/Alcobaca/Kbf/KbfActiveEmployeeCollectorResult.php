@@ -11,5 +11,6 @@ final readonly class KbfActiveEmployeeCollectorResult
         public int $created,
         public int $unchanged,
         public int $invalid,
+        public int $normalized,
     ) {}
 }

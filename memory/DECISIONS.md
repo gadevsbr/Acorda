@@ -80,3 +80,12 @@ Consequências: vínculos ambíguos permanecem sem pai até revisão; nomes de r
 - Motivação: o endpoint REST da folha está vazio, enquanto o destino oficial de RH contém os vínculos ativos atuais.
 - Alternativas: aguardar indefinidamente a API REST; automatizar o DOM visual; tratar a grade como API estável sem validação.
 Consequências: IDs de formulário, fluxo e componentes ficam explícitos e testados; qualquer mudança interrompe a coleta e gera alerta, sem publicar conjunto parcial. A matrícula identifica o vínculo na fonte, mas não autoriza fusão de pessoas nem comprova remuneração.
+
+## DEC-010 — Identidade funcional conservadora por matrícula
+
+- Data: 2026-08-14
+- Status: Aceita
+- Decisão: criar uma pessoa de fonte para cada matrícula KBF e deduplicar cargos apenas por nome normalizado exato.
+- Motivação: 42 grupos possuem nomes repetidos e a fonte não fornece identificador civil seguro para unir matrículas.
+- Alternativas: unir pessoas pelo nome; criar uma pessoa por linha/revisão; bloquear toda normalização.
+Consequências: homônimos e múltiplas matrículas não são fundidos indevidamente. Candidatos de identidade poderão sugerir revisões futuras, mas exigirão evidência adicional. Centro de custo só liga a órgão por correspondência exata e única; a execução atual produziu zero ligações.

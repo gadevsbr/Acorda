@@ -4,6 +4,15 @@ O formato segue Keep a Changelog e o projeto usa versionamento semântico.
 
 ## [Unreleased]
 
+## [0.4.0] — 2026-08-14
+
+### Added
+
+- Normalização de 1.628 pessoas/vínculos e 203 cargos/funções, sempre rastreável ao registro bruto.
+- Encerramento observado somente após conjunto integral válido; nomes iguais permanecem identidades separadas por matrícula.
+
+## [0.3.1] — 2026-08-14
+
 ### Added
 
 - Cliente session-aware da grade oficial de servidores ativos do KBF.

@@ -12,9 +12,9 @@ O fluxo futuro obrigatório é fonte → registro bruto → validação → norm
 
 ## Estado atual
 
-Fase 0 publicada como `v0.1.0`. A Fase 1 foi publicada nas versões `v0.2.0` a `v0.2.2`. A estrutura organizacional da Fase 2 saiu em `v0.3.0`; a preservação bruta dos servidores ativos KBF foi publicada em `v0.3.1`, após aprovação do CI no commit `39cf57f`. O cadastro público está desabilitado e o login será reservado ao painel administrativo. Ainda não existem pessoas, cargos ou folha normalizada.
+Fase 0 publicada como `v0.1.0`. A Fase 1 foi publicada nas versões `v0.2.0` a `v0.2.2`. A estrutura organizacional da Fase 2 saiu em `v0.3.0`; a preservação bruta dos servidores ativos KBF foi publicada em `v0.3.1`. Pessoas, cargos e vínculos agora estão normalizados localmente e aguardam validação completa e publicação. O cadastro público está desabilitado e o login será reservado ao painel administrativo. Remunerações ainda não foram integradas.
 
-Evidências atuais: 47 testes PHP com 208 asserções, Pint, ESLint, `vue-tsc` e build Vite passaram. Composer e npm audit não encontraram vulnerabilidades conhecidas. As migrations passaram no MySQL 8.4.7 e o scheduler lista as três coletas. A coleta organizacional real trouxe 12 registros em uma página. A API da folha continua vazia, mas o KBF voltou a responder: a execução 5 preservou 1.628 vínculos ativos válidos e a execução 6 confirmou idempotência, sem duplicação. Docker ainda não está instalado e o Compose continua sem execução comprovada.
+Evidências atuais: 48 testes PHP com 220 asserções, Pint, ESLint, `vue-tsc` e build Vite passaram. Composer e npm audit não encontraram vulnerabilidades conhecidas. Todas as migrations passaram no MySQL 8.4.7. As execuções KBF 7 e 8 normalizaram de forma idempotente 1.628 pessoas/vínculos e 203 cargos/funções, com zero inválidos. Existem 42 grupos de nomes repetidos preservados separadamente e zero ligações inferidas entre centro de custo e órgão. Docker ainda não está instalado e o Compose continua sem execução comprovada.
 
 ## Restrições
 
@@ -25,4 +25,4 @@ Evidências atuais: 47 testes PHP com 208 asserções, Pint, ESLint, `vue-tsc` e
 
 ## Próximo passo
 
-Próximo passo da Fase 2: normalizar cargos, pessoas e vínculos a partir dos 1.628 registros brutos do KBF, criando uma identidade conservadora por matrícula e candidatos separados para possíveis duplicidades. A remuneração deve ser investigada no formulário 278 sem inferir valores da grade de servidores ativos.
+Próximo passo da Fase 2: gerar candidatos revisáveis para os 42 grupos de nomes repetidos, sem fusão automática, e integrar a folha mensal pelo formulário 278 sem sobrescrever histórico.

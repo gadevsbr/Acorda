@@ -4,7 +4,7 @@ Plataforma independente de transparência pública que torna dados oficiais de A
 
 ## Estado atual
 
-A Fase 1 possui o núcleo auditável de ingestão. A Fase 2 começou pela estrutura organizacional: 12 órgãos reais foram coletados e normalizados, com páginas públicas em `/orgaos`. A API de dados abertos da folha continua vazia, mas a grade oficial KBF voltou a responder e 1.628 vínculos ativos foram preservados em formato bruto e auditável. Ainda não há perfis de pessoas ou remunerações publicadas. Consulte [ROADMAP.md](ROADMAP.md).
+A Fase 1 possui o núcleo auditável de ingestão. Na Fase 2, 12 órgãos e 1.628 vínculos ativos foram coletados. Os vínculos estão normalizados em 1.628 identidades conservadoras por matrícula e 203 cargos/funções. Ainda não há perfis públicos de pessoas ou remunerações publicadas. Consulte [ROADMAP.md](ROADMAP.md).
 
 ## Stack
 
@@ -105,7 +105,7 @@ A grade oficial de servidores ativos do KBF pode ser preservada com:
 php artisan collect:kbf-active-employees
 ```
 
-O cliente mantém a sessão exigida pelo Webrun, confere o total declarado contra todas as linhas recebidas e falha fechado se o contrato da grade mudar. Esta etapa guarda os vínculos brutos; não cria identidades nem remunerações automaticamente. O scheduler executa a coleta diariamente às 03:15.
+O cliente mantém a sessão exigida pelo Webrun, confere o total declarado contra todas as linhas recebidas e falha fechado se o contrato da grade mudar. Após preservar o bruto, normaliza pessoa, cargo/função e vínculo. Cada matrícula gera uma identidade de fonte separada; nomes iguais nunca são fundidos automaticamente. O scheduler executa a coleta diariamente às 03:15.
 
 ## Segurança e contribuição
 

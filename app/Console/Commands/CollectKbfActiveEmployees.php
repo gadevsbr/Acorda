@@ -20,8 +20,8 @@ class CollectKbfActiveEmployees extends Command
         try {
             $lock->block(1);
             $result = $collector->collect();
-            $this->table(['Execução', 'Status', 'Obtidos', 'Novos', 'Inalterados', 'Inválidos'], [[
-                $result->runId, $result->status, $result->fetched, $result->created, $result->unchanged, $result->invalid,
+            $this->table(['Execução', 'Status', 'Obtidos', 'Novos', 'Inalterados', 'Inválidos', 'Normalizados'], [[
+                $result->runId, $result->status, $result->fetched, $result->created, $result->unchanged, $result->invalid, $result->normalized,
             ]]);
 
             return self::SUCCESS;

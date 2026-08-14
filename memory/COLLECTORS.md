@@ -14,4 +14,4 @@ Alertas: `unexpected_empty`, `source_partial`, `source_unavailable` e `schema_ch
 
 Estrutura organizacional: `php artisan collect:prefeitura-organizations`, diariamente às 02:45, versão `1.0.0`. Registros inválidos permanecem brutos e não são normalizados.
 
-Servidores ativos KBF: `php artisan collect:kbf-active-employees`, diariamente às 03:15, versão `1.0.0`. A execução 5 criou 1.628 registros válidos e a execução 6 confirmou idempotência com 1.628 inalterados. O coletor exige sessão, confere o total entregue e não normaliza pessoas ou remunerações nesta etapa.
+Servidores ativos KBF: `php artisan collect:kbf-active-employees`, diariamente às 03:15, versão `1.1.0`. As execuções 7 e 8 normalizaram de forma idempotente 1.628 pessoas/vínculos e 203 cargos/funções, com zero inválidos. Há 42 grupos de nomes repetidos preservados como identidades distintas por matrícula. Nenhum dos centros de custo correspondeu exatamente aos 12 nomes organizacionais; por segurança, zero associações de órgão foram inferidas.

@@ -10,7 +10,7 @@ Legenda: `[ ]` pendente, `[~]` em andamento, `[x]` concluído com evidência.
 - [~] Docker opcional para app, Nginx, MySQL, fila e scheduler (arquivos criados; execução depende de Docker externo)
 - [x] documentação e memória do projeto
 - [x] CI com testes, estilo, lint e build
-- [~] primeira release no GitHub
+- [x] primeira release no GitHub (`v0.1.0`)
 
 ## Fase 1 — Núcleo de dados
 

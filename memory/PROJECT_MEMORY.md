@@ -12,9 +12,9 @@ O fluxo futuro obrigatório é fonte → registro bruto → validação → norm
 
 ## Estado atual
 
-Fase 0 publicada como `v0.1.0`. A Fase 2 terminou em `v0.6.0`, seguida da home em `v0.6.1` e busca/perfis em `v0.7.0`. A Fase 4 começou com despesas raw-first em `v0.8.0`; fornecedores, contratos e licitações raw-first foram publicados em `v0.9.0` após CI aprovada no commit `ce47bb7`. A Fase 4 permanece em andamento até a normalização pública.
+Fase 0 publicada como `v0.1.0`. A Fase 2 terminou em `v0.6.0`, seguida da home em `v0.6.1` e busca/perfis em `v0.7.0`. A Fase 4 começou com despesas raw-first em `v0.8.0`, compras raw-first em `v0.9.0` e consultas públicas em `v0.10.0` após CI aprovada no commit `47711af`. Despesas e fiscais permanecem parciais.
 
-Evidências atuais: 63 testes PHP com 355 asserções e todos os gates de qualidade passaram. As execuções 12, 16 e 17 preservaram 361 fornecedores, 1.275 contratos e 1.073 licitações sem inválidos; despesas e fiscais responderam vazios e ficaram parciais. O Apache local ainda exige `index.php` explícito nas rotas amigáveis.
+Evidências atuais: 64 testes PHP com 390 asserções e todos os gates passaram. O MySQL contém 361 fornecedores, 1.275 contratos e 1.073 licitações; 346 contratos ligam fornecedor e 335 ligam licitação somente por ID oficial. O smoke HTTP foi impedido porque o Wamp encerrou as conexões; a limitação local continua registrada.
 
 ## Restrições
 

@@ -12,7 +12,7 @@ O fluxo futuro obrigatório é fonte → registro bruto → validação → norm
 
 ## Estado atual
 
-Fase 0 publicada como `v0.1.0`. A Fase 1 foi publicada nas versões `v0.2.0` a `v0.2.2`. A estrutura organizacional saiu em `v0.3.0`, a camada bruta KBF em `v0.3.1`, pessoas/vínculos em `v0.4.0`, a folha mensal em `v0.5.0` e a revisão auditável de identidades em `v0.6.0`. A Fase 2 está concluída. A home da Fase 3 está conectada ao banco e aguarda publicação. O cadastro público está desabilitado e o login é reservado ao painel administrativo.
+Fase 0 publicada como `v0.1.0`. A Fase 1 foi publicada nas versões `v0.2.0` a `v0.2.2`. A estrutura organizacional saiu em `v0.3.0`, a camada bruta KBF em `v0.3.1`, pessoas/vínculos em `v0.4.0`, a folha mensal em `v0.5.0` e a revisão auditável de identidades em `v0.6.0`. A Fase 2 está concluída. A home conectada ao banco foi publicada em `v0.6.1`, após CI aprovado no commit `c32633f`. O cadastro público está desabilitado e o login é reservado ao painel administrativo.
 
 Evidências atuais: 56 testes PHP com 276 asserções, Pint, ESLint, `vue-tsc`, build Vite, Composer audit e npm audit passaram. A home foi validada no Edge em `http://localhost/acorda/public/`: mostrou 12 órgãos, 1.628 vínculos, 203 cargos, 1.556 pagamentos, competência 07/2026 e R$ 4.190.802,17 líquidos; o aviso inicial não apareceu e o link de órgãos preservou o subdiretório. Todas as migrations passaram no MySQL 8.4.7. Docker ainda não está instalado e o Compose continua sem execução comprovada.
 

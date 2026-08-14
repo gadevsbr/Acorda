@@ -39,6 +39,12 @@ const showingNavigationDropdown = ref(false);
                                 >
                                     Dashboard
                                 </NavLink>
+                                <NavLink
+                                    :href="route('identity-candidates.index')"
+                                    :active="route().current('identity-candidates.*')"
+                                >
+                                    Identidades
+                                </NavLink>
                             </div>
                         </div>
 
@@ -145,6 +151,12 @@ const showingNavigationDropdown = ref(false);
                             :active="route().current('dashboard')"
                         >
                             Dashboard
+                        </ResponsiveNavLink>
+                        <ResponsiveNavLink
+                            :href="route('identity-candidates.index')"
+                            :active="route().current('identity-candidates.*')"
+                        >
+                            Identidades
                         </ResponsiveNavLink>
                     </div>
 

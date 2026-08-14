@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\IdentityCandidateController;
 use App\Http\Controllers\OrganizationController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SourceController;
@@ -21,6 +22,8 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
+    Route::get('/admin/candidatos-identidade', [IdentityCandidateController::class, 'index'])->middleware('verified')->name('identity-candidates.index');
+    Route::patch('/admin/candidatos-identidade/{identityCandidate}', [IdentityCandidateController::class, 'update'])->middleware('verified')->name('identity-candidates.update');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');

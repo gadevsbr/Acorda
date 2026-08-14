@@ -4,7 +4,7 @@ Plataforma independente de transparência pública que torna dados oficiais de A
 
 ## Estado atual
 
-A Fase 1 possui o núcleo auditável de ingestão. Na Fase 2, 12 órgãos, 1.628 vínculos ativos e 1.556 pagamentos de julho/2026 foram coletados. Os vínculos estão normalizados em 1.628 identidades conservadoras por matrícula e 203 cargos/funções. Ainda não há perfis públicos de pessoas. Consulte [ROADMAP.md](ROADMAP.md).
+A Fase 1 possui o núcleo auditável de ingestão. A Fase 2 está completa com 12 órgãos, 1.628 vínculos ativos, 1.556 pagamentos de julho/2026 e 42 candidatos revisáveis de identidade. Os vínculos estão normalizados em 1.628 identidades conservadoras por matrícula e 203 cargos/funções. Ainda não há perfis públicos de pessoas. Consulte [ROADMAP.md](ROADMAP.md).
 
 ## Stack
 
@@ -114,6 +114,14 @@ php artisan collect:kbf-payroll --month=7 --year=2026
 ```
 
 Valores monetários são guardados em centavos inteiros. Correções criam revisões encadeadas, sem sobrescrever o valor anterior. A competência padrão é o mês anterior e o scheduler repete a coleta diariamente às 03:45 para detectar correções da fonte.
+
+Possíveis identidades repetidas são geradas sem fusão automática:
+
+```powershell
+php artisan identity:generate-candidates
+```
+
+A revisão fica em `/admin/candidatos-identidade`, exige autenticação e justificativa, e registra o usuário e o horário da decisão. Confirmar uma correspondência não apaga nem combina os registros de origem. O scheduler regenera candidatos idempotentemente às 04:15.
 
 ## Segurança e contribuição
 

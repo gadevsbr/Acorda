@@ -27,3 +27,8 @@ Schedule::command('collect:kbf-payroll')
     ->dailyAt('03:45')
     ->withoutOverlapping(120)
     ->onOneServer();
+
+Schedule::command('identity:generate-candidates')
+    ->dailyAt('04:15')
+    ->withoutOverlapping(30)
+    ->onOneServer();

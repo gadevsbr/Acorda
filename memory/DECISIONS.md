@@ -98,3 +98,12 @@ Consequências: homônimos e múltiplas matrículas não são fundidos indevidam
 - Motivação: evitar erro de ponto flutuante e preservar o histórico auditável sem sobrescrita.
 - Alternativas: decimal no banco com atualização destrutiva; guardar apenas o payload bruto; considerar a primeira coleta definitiva.
 Consequências: cada revisão aponta para o registro bruto e para a revisão substituída; somente `is_latest` muda. A equação bruto menos descontos igual a líquido e a competência solicitada são validadas antes da normalização.
+
+## DEC-012 — Revisão de identidade sem fusão destrutiva
+
+- Data: 2026-08-14
+- Status: Aceita
+- Decisão: gerar candidatos apenas para nomes normalizados exatamente iguais e registrar confirmação/rejeição administrativa sem fundir pessoas.
+- Motivação: nome igual é evidência fraca; a decisão precisa ser auditável e reversível antes de qualquer identidade canônica futura.
+- Alternativas: fusão automática; fuzzy matching; ignorar duplicidades.
+Consequências: cada decisão exige justificativa e registra revisor e horário. Os registros funcionais e suas proveniências permanecem separados mesmo quando um candidato é confirmado.

@@ -4,6 +4,15 @@ O formato segue Keep a Changelog e o projeto usa versionamento semântico.
 
 ## [Unreleased]
 
+## [0.6.0] — 2026-08-14
+
+### Added
+
+- Geração idempotente de 42 candidatos de identidade por nome normalizado exatamente igual.
+- Fila administrativa autenticada para confirmar ou rejeitar candidatos com justificativa, revisor e horário.
+- Preservação das identidades de origem mesmo após confirmação revisada.
+- Agendamento diário da geração de candidatos.
+
 ## [0.5.0] — 2026-08-14
 
 ### Added

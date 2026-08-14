@@ -4,6 +4,19 @@ O formato segue Keep a Changelog e o projeto usa versionamento semântico.
 
 ## [Unreleased]
 
+## [0.10.0] — 2026-08-14
+
+### Added
+
+- Tabelas normalizadas de fornecedores, licitações e contratos, com valores monetários em centavos.
+- Relações conservadoras por IDs oficiais entre contrato, fornecedor e licitação.
+- Consultas e perfis públicos para os três datasets, com busca, valores, fonte e contexto.
+- Comando `procurement:normalize` agendado após as coletas.
+
+### Security
+
+- CPF de fornecedor pessoa física é mascarado na interface; CNPJ permanece atribuído à fonte oficial.
+
 ## [0.9.0] — 2026-08-14
 
 ### Added

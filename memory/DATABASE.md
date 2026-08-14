@@ -31,4 +31,8 @@ Despesas permanecem em `raw_source_records`: nenhuma tabela normalizada será cr
 
 Fornecedores, contratos e licitações também estão preservados em `raw_source_records` antes da migration normalizada. As futuras relações usarão IDs oficiais; identificadores de pessoa física terão exposição pública mascarada.
 
+- `suppliers`: fornecedor oficial, nome, identificador fiscal e referência bruta;
+- `procurements`: licitação, modalidade, objeto, situação, datas e valores em centavos;
+- `contracts`: contrato, valores, vigência e relações opcionais com fornecedor e licitação por ID oficial.
+
 A unicidade de `raw_source_records` é `(source_id, external_id, checksum)`: repetir o mesmo payload é idempotente; mudar conteúdo cria uma revisão auditável. Exclusões de fonte são restritas quando há histórico bruto.

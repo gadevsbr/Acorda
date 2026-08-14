@@ -44,3 +44,5 @@ foreach (['fornecedores', 'contratos', 'licitacoes', 'fiscais-contrato'] as $ind
         ->withoutOverlapping(120)
         ->onOneServer();
 }
+
+Schedule::command('procurement:normalize')->dailyAt('05:50')->withoutOverlapping(120)->onOneServer();

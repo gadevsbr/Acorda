@@ -25,4 +25,4 @@ Evidências atuais: 63 testes PHP com 355 asserções e todos os gates de qualid
 
 ## Próximo passo
 
-Normalizar e publicar fornecedores, contratos e licitações já preservados, mascarando CPF de pessoa física. Despesas e fiscais continuam aguardando registros reais da fonte.
+Continuar a Fase 4 quando despesas e fiscais entregarem registros reais. Para compras já publicadas, ampliar filtros e documentos sem inferir relações ausentes.

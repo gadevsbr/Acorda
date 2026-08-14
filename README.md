@@ -123,6 +123,8 @@ As despesas oficiais são preservadas por `php artisan collect:prefeitura-expens
 
 Fornecedores, contratos, licitações e fiscais usam `php artisan collect:prefeitura-procurement {resource}`. Os quatro recursos são coletados diariamente entre 05:10 e 05:40; respostas vazias permanecem parciais e campos opcionais ausentes não são inventados.
 
+Após a preservação, `php artisan procurement:normalize` relaciona somente IDs oficiais. As consultas públicas ficam em `/contratos`, `/licitacoes` e `/fornecedores`; CPF de pessoa física é mascarado.
+
 Possíveis identidades repetidas são geradas sem fusão automática:
 
 ```powershell

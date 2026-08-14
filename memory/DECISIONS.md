@@ -134,3 +134,12 @@ Consequências: coletor, checkpoint, saúde e alertas ficam operacionais; a Fase
 - Motivação: relações entre contratada, fornecedor e licitação precisam usar IDs oficiais, e CPF de pessoa física exige tratamento de privacidade.
 - Alternativas: publicar diretamente o JSON; rejeitar campos opcionais nulos; relacionar apenas por nome.
 Consequências: 2.709 registros reais estão auditáveis e prontos para normalização conservadora; nenhuma identidade ou relação é inferida por similaridade textual.
+
+## DEC-016 — Relações de compras somente por IDs oficiais
+
+- Data: 2026-08-14
+- Status: Aceita
+- Decisão: relacionar contratos a fornecedores e licitações exclusivamente pelos IDs publicados; mascarar CPF na apresentação pública.
+- Motivação: nomes podem colidir e identificadores de pessoa física exigem minimização na interface.
+- Alternativas: relacionar por nome; exibir CPF integral; omitir fornecedores pessoa física.
+Consequências: relações ausentes permanecem nulas; CNPJ é exibido como publicado e CPF aparece mascarado.

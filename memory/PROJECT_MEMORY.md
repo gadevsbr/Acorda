@@ -12,9 +12,9 @@ O fluxo futuro obrigatório é fonte → registro bruto → validação → norm
 
 ## Estado atual
 
-Fase 0 publicada como `v0.1.0`. A Fase 1 foi publicada nas versões `v0.2.0` a `v0.2.2`. A estrutura organizacional saiu em `v0.3.0`, a camada bruta KBF em `v0.3.1`, pessoas/vínculos em `v0.4.0`, a folha mensal em `v0.5.0` e a revisão auditável de identidades em `v0.6.0`. A Fase 2 está concluída. A home saiu em `v0.6.1`, busca e perfis em `v0.7.0`, e a coleta raw-first de despesas em `v0.8.0` após CI aprovada no commit `86ed2bc`. A Fase 4 permanece em andamento porque a fonte respondeu vazia.
+Fase 0 publicada como `v0.1.0`. A Fase 2 terminou em `v0.6.0`, seguida da home em `v0.6.1` e busca/perfis em `v0.7.0`. A Fase 4 começou com despesas raw-first em `v0.8.0`; fornecedores, contratos e licitações raw-first foram publicados em `v0.9.0` após CI aprovada no commit `ce47bb7`. A Fase 4 permanece em andamento até a normalização pública.
 
-Evidências atuais: 61 testes PHP com 349 asserções, Pint, ESLint, `vue-tsc`, build Vite, Composer audit e npm audit passaram. A execução real 11 de despesas recebeu HTTP 200, envelope válido e `total=0`, corretamente registrado como parcial. No Edge, a busca real por ABEL mostrou vínculo, competência 07/2026, valores e links oficiais. O Apache atual só encaminha essas rotas com `index.php` explícito, indicando configuração externa de rewrite pendente no Wamp. Todas as migrations passaram no MySQL 8.4.7.
+Evidências atuais: 63 testes PHP com 355 asserções e todos os gates de qualidade passaram. As execuções 12, 16 e 17 preservaram 361 fornecedores, 1.275 contratos e 1.073 licitações sem inválidos; despesas e fiscais responderam vazios e ficaram parciais. O Apache local ainda exige `index.php` explícito nas rotas amigáveis.
 
 ## Restrições
 

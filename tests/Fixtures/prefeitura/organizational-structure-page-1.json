@@ -1,0 +1,35 @@
+{
+    "total": 2,
+    "per_page": 100,
+    "current_page": 1,
+    "last_page": 1,
+    "next_page_url": null,
+    "prev_page_url": null,
+    "from": 1,
+    "to": 2,
+    "data": [
+        {
+            "id": 53,
+            "nome": "SECRETARIA DE FINANÇAS",
+            "responsavel": "RESPONSÁVEL REMOVIDO NA FIXTURE",
+            "telefone": "(00) 0000-0000",
+            "email": "fixture@example.test",
+            "endereco": "ENDEREÇO REMOVIDO NA FIXTURE",
+            "funcionamento": "07:00 às 13:00 horas",
+            "created_at": "2018-01-11 12:25:45",
+            "updated_at": "2025-10-03 20:02:12"
+        },
+        {
+            "id": 1180,
+            "nome": "Departamento de Tributação",
+            "responsavel": "RESPONSÁVEL REMOVIDO NA FIXTURE",
+            "telefone": "(00) 0000-0000",
+            "email": "fixture@example.test",
+            "endereco": "ENDEREÇO REMOVIDO NA FIXTURE",
+            "funcionamento": "07:00 às 13:00 horas",
+            "orgao_vinculado_nome": "SECRETARIA DE FINANÇAS",
+            "created_at": "2025-10-03 17:50:26",
+            "updated_at": "2025-10-03 20:02:12"
+        }
+    ]
+}

@@ -12,9 +12,9 @@ O fluxo futuro obrigatório é fonte → registro bruto → validação → norm
 
 ## Estado atual
 
-Fase 0 publicada como `v0.1.0`. O núcleo da Fase 1 foi publicado como `v0.2.0`; alertas deduplicados com e-mail opcional em `v0.2.1`; o mapa atualizado das fontes de folha em `v0.2.2`. Estão implementados fontes, saúde, registros brutos, execuções, checkpoints, cliente/coletor da folha e página `/fontes`. O cadastro público está desabilitado e o login será reservado ao painel administrativo. Ainda não existem pessoas ou folha normalizada.
+Fase 0 publicada como `v0.1.0`. A Fase 1 foi publicada nas versões `v0.2.0` a `v0.2.2`. A Fase 2 começou pela estrutura organizacional: coletor, normalização, hierarquia e páginas `/orgaos` e `/orgao/{slug}` estão implementados. O cadastro público está desabilitado e o login será reservado ao painel administrativo. Ainda não existem pessoas, cargos ou folha normalizada.
 
-Evidências atuais: 38 testes PHP com 136 asserções, Pint, ESLint, `vue-tsc`, build Vite, CI GitHub e smoke HTTP 200 em `/` e `/fontes` passaram. As novas migrations passaram no MySQL 8.4.7. A coleta real controlada retornou HTTP 200 e envelope válido, mas `total=0`; foi corretamente persistida como `partial`, sem inferir ausência de servidores. Um alerta `unexpected_empty` foi persistido como aberto e sem e-mail configurado. O WampServer exigiu `COLLECTOR_CA_BUNDLE` local; a verificação TLS permaneceu habilitada. Docker ainda não está instalado e o Compose continua sem execução comprovada.
+Evidências atuais: 44 testes PHP com 196 asserções, Pint, ESLint, `vue-tsc`, build Vite e smoke HTTP 200 passaram. As migrations passaram no MySQL 8.4.7. A coleta organizacional real trouxe 12 registros em uma página, normalizou os 12 com proveniência e vinculou exatamente o Departamento de Tributação à Secretaria de Finanças. A folha continua HTTP 200 com `total=0` e status `partial`. Docker ainda não está instalado e o Compose continua sem execução comprovada.
 
 ## Restrições
 
@@ -25,4 +25,4 @@ Evidências atuais: 38 testes PHP com 136 asserções, Pint, ESLint, `vue-tsc`, 
 
 ## Próximo passo
 
-Bloqueio para a Fase 2: a API estruturada da folha responde vazia. O site oficial atual aponta servidores/remuneração para formulários KBF sem API documentada visível; o SoftHaas encontrado só lista 2020–2021 e é legado. Investigar chamadas estruturadas do KBF ou obter resposta oficial não vazia antes de normalizar. Não criar scraper HTML frágil nem fixture apresentada como oficial.
+Próximo passo da Fase 2: cargos, pessoas e vínculos continuam bloqueados pela API vazia da folha. O KBF não respondeu a tentativas diretas em até 40 segundos e não apresentou API documentada. Não criar scraper HTML frágil. É possível avançar autoridades separadamente, mantendo a identidade política distinta até haver evidência de associação.

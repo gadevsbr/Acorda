@@ -20,5 +20,6 @@ As conexões MySQL/MariaDB fixam o engine `InnoDB`. Isso garante transações e 
 - `collector_checkpoints`: estado idempotente por fonte/coletor/chave;
 - `raw_source_records`: payload bruto, origem, datas, metadados HTTP, checksum e validação.
 - `source_alerts`: tipo, severidade, ocorrências, resolução e estado da notificação externa.
+- `organizations`: órgão atual, slug, tipo, contatos, responsável textual, hierarquia e referência ao registro bruto.
 
 A unicidade de `raw_source_records` é `(source_id, external_id, checksum)`: repetir o mesmo payload é idempotente; mudar conteúdo cria uma revisão auditável. Exclusões de fonte são restritas quando há histórico bruto.

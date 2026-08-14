@@ -4,6 +4,16 @@ O formato segue Keep a Changelog e o projeto usa versionamento semântico.
 
 ## [Unreleased]
 
+## [0.3.0] — 2026-08-14
+
+### Added
+
+- Coletor independente da estrutura organizacional oficial.
+- Normalização de órgãos com proveniência até o registro bruto.
+- Hierarquia somente por correspondência nominal exata e única.
+- Páginas públicas `/orgaos` e `/orgao/{slug}`.
+- Fixture oficial sanitizada e testes de validação, idempotência, hierarquia e páginas.
+
 ## [0.2.2] — 2026-08-14
 
 ### Documentation

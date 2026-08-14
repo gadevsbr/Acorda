@@ -53,3 +53,21 @@ Consequências: registros repetidos não duplicam e alterações criam nova vers
 - Motivação: ausência na resposta não comprova ausência do fato nem completude da fonte.
 - Alternativas: considerar operacional; considerar indisponível.
 Consequências: a interface informa a limitação e não publica conclusões negativas.
+
+## DEC-007 — Uma fonte lógica por dataset
+
+- Data: 2026-08-14
+- Status: Aceita
+- Decisão: representar folha e estrutura organizacional como fontes lógicas separadas, mesmo compartilhando portal e domínio.
+- Motivação: saúde vazia da folha não deve contaminar nem ser escondida pela saúde operacional de organizações.
+- Alternativas: uma fonte única para todo o portal.
+Consequências: `/fontes` mostra completude por dataset e cada coletor mantém saúde e alertas independentes.
+
+## DEC-008 — Hierarquia organizacional exata
+
+- Data: 2026-08-14
+- Status: Aceita
+- Decisão: ligar pai e filho somente quando `orgao_vinculado_nome` corresponder de forma normalizada a exatamente um órgão.
+- Motivação: evitar hierarquia inventada por similaridade textual.
+- Alternativas: fuzzy matching; revisão manual obrigatória para todo vínculo.
+Consequências: vínculos ambíguos permanecem sem pai até revisão; nomes de responsáveis não criam pessoas automaticamente.

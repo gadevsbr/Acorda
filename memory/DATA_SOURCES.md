@@ -15,6 +15,14 @@ Campos: folha, autoridades, contratos, fiscais, licitações, despesas, document
 - Status: parcial
 Observações: a documentação oficial lista os campos necessários. A resposta vazia atual não confirma ausência de servidores nem indisponibilidade histórica. O servidor não retornou ETag ou Last-Modified no teste controlado.
 
+## Prefeitura Municipal de Alcobaça — Estrutura Organizacional
+
+- API: `/estrutura-organizacional`
+- Último teste: 2026-08-14, HTTP 200, 12 registros, uma página solicitada com `per_page=100`
+- Campos observados: ID, nome, responsável, contatos, endereço, competências, funcionamento, órgão vinculado e datas da fonte
+- Status: operacional e integrado
+- Normalização: responsável preservado como texto; hierarquia apenas por nome exato e único
+
 ## Prefeitura Municipal de Alcobaça — Transparência RH / KBF
 
 - Entidade: Prefeitura Municipal de Alcobaça (BA)
@@ -24,7 +32,7 @@ Observações: a documentação oficial lista os campos necessários. A resposta
 - API: nenhuma API estruturada foi localizada na investigação de 2026-08-14
 - Formato observado: aplicação web com iframe/formulário
 - Status: descoberta; não integrada
-- Observações: é o destino atual publicado pelo site oficial da Prefeitura. Antes de qualquer automação, investigar chamadas estruturadas e termos; não criar scraper HTML frágil.
+- Observações: é o destino atual publicado pelo site oficial da Prefeitura. Três tentativas diretas locais expiraram sem resposta em até 40 segundos. Antes de qualquer automação, investigar chamadas estruturadas e termos; não criar scraper HTML frágil.
 
 ## SoftHaas — Folha legada
 

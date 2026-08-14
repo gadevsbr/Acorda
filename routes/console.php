@@ -12,3 +12,8 @@ Schedule::command('collect:prefeitura-payroll --max-pages=20 --per-page=100')
     ->dailyAt('02:15')
     ->withoutOverlapping(120)
     ->onOneServer();
+
+Schedule::command('collect:prefeitura-organizations --max-pages=10 --per-page=100')
+    ->dailyAt('02:45')
+    ->withoutOverlapping(120)
+    ->onOneServer();

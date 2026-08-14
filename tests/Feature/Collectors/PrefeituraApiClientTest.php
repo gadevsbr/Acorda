@@ -62,11 +62,38 @@ class PrefeituraApiClientTest extends TestCase
         }
     }
 
+    public function test_it_fetches_the_documented_organizational_structure_resource(): void
+    {
+        Http::fake([
+            'www.acessoinformacao.com.br/*' => Http::response(
+                $this->organizationalFixture(),
+                200,
+                ['Content-Type' => 'application/json'],
+            ),
+        ]);
+
+        $page = app(PrefeituraApiClient::class)->organizationalStructurePage(1, 100);
+
+        $this->assertSame(2, $page->total);
+        $this->assertCount(2, $page->records);
+        $this->assertSame('SECRETARIA DE FINANÇAS', $page->records[0]['nome']);
+    }
+
     /** @return array<string, mixed> */
     private function fixture(string $name): array
     {
         return json_decode(
             (string) file_get_contents(base_path('tests/Fixtures/prefeitura/'.$name)),
+            true,
+            flags: JSON_THROW_ON_ERROR,
+        );
+    }
+
+    /** @return array<string, mixed> */
+    private function organizationalFixture(): array
+    {
+        return json_decode(
+            (string) file_get_contents(base_path('tests/Fixtures/prefeitura/organizational-structure-page-1.json')),
             true,
             flags: JSON_THROW_ON_ERROR,
         );

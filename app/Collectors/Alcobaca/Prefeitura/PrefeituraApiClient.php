@@ -10,7 +10,10 @@ use RuntimeException;
 
 final class PrefeituraApiClient
 {
-    public function __construct(private readonly PayrollEnvelopeValidator $validator) {}
+    public function __construct(
+        private readonly PayrollEnvelopeValidator $validator,
+        private readonly OrganizationalStructureValidator $organizationalStructureValidator,
+    ) {}
 
     /**
      * @param  array<string, int|string>  $filters
@@ -52,6 +55,50 @@ final class PrefeituraApiClient
             envelope: $payload,
             total: (int) $payload['total'],
             perPage: (int) $payload['per_page'],
+            currentPage: (int) $payload['current_page'],
+            lastPage: (int) $payload['last_page'],
+            url: $url.'?'.http_build_query($query),
+            httpStatus: $response->status(),
+            contentType: $response->header('Content-Type'),
+            etag: $response->header('ETag'),
+            lastModified: $response->header('Last-Modified'),
+            responseTimeMs: $responseTimeMs,
+        );
+    }
+
+    /** @throws ConnectionException */
+    public function organizationalStructurePage(int $page, int $perPage): OrganizationalStructurePage
+    {
+        if ($page < 1 || $perPage < 1 || $perPage > 500) {
+            throw new InvalidArgumentException('Página deve ser >= 1 e per_page deve estar entre 1 e 500.');
+        }
+
+        $url = rtrim((string) config('collectors.prefeitura.base_url'), '/').'/estrutura-organizacional';
+        $this->assertAllowedUrl($url);
+        $query = ['page' => $page, 'per_page' => $perPage];
+        $startedAt = hrtime(true);
+        $response = $this->request()->get($url, $query);
+        $responseTimeMs = (int) round((hrtime(true) - $startedAt) / 1_000_000);
+
+        if ($response->redirect()) {
+            throw new RuntimeException('Redirecionamento recusado pelo coletor para preservar a allowlist.');
+        }
+
+        $response->throw();
+        $payload = $response->json();
+        if (! is_array($payload)) {
+            throw new RuntimeException('A API da estrutura organizacional não retornou um objeto JSON.');
+        }
+
+        $this->organizationalStructureValidator->validateEnvelope($payload);
+
+        /** @var array<int, array<string, mixed>> $records */
+        $records = $payload['data'];
+
+        return new OrganizationalStructurePage(
+            records: $records,
+            envelope: $payload,
+            total: (int) $payload['total'],
             currentPage: (int) $payload['current_page'],
             lastPage: (int) $payload['last_page'],
             url: $url.'?'.http_build_query($query),

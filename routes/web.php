@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\OrganizationController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SourceController;
 use Illuminate\Support\Facades\Route;
@@ -12,6 +13,8 @@ Route::get('/', function () {
 });
 
 Route::get('/fontes', [SourceController::class, 'index'])->name('sources.index');
+Route::get('/orgaos', [OrganizationController::class, 'index'])->name('organizations.index');
+Route::get('/orgao/{organization}', [OrganizationController::class, 'show'])->name('organizations.show');
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');

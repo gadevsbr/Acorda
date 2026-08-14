@@ -4,7 +4,7 @@ Plataforma independente de transparência pública que torna dados oficiais de A
 
 ## Estado atual
 
-A Fase 1 possui o núcleo de ingestão bruta e o primeiro coletor da folha. A fonte oficial respondeu com schema válido, porém sem registros na última consulta; por isso o status público é parcial. Ainda não há perfis ou dados normalizados e nenhuma tela deve ser interpretada como MVP de dados pronto. Consulte [ROADMAP.md](ROADMAP.md).
+A Fase 1 possui o núcleo auditável de ingestão. A Fase 2 começou pela estrutura organizacional: 12 órgãos reais foram coletados e normalizados, com páginas públicas em `/orgaos`. A folha oficial continua com resposta vazia e status parcial; ainda não há perfis de pessoas ou remunerações publicadas. Consulte [ROADMAP.md](ROADMAP.md).
 
 ## Stack
 
@@ -90,6 +90,14 @@ O comando guarda execução, saúde, checkpoint e payload bruto versionado por c
 Alertas de indisponibilidade, schema alterado, parcialidade e resposta vazia são deduplicados em `source_alerts`. Configure `SOURCE_ALERT_EMAIL` e o mailer do Laravel para receber a primeira ocorrência e cada reabertura; falha no envio é registrada sem interromper a coleta.
 
 A página pública `/fontes` mostra a última condição observada e sempre liga para a fonte oficial.
+
+A estrutura organizacional usa um coletor separado:
+
+```powershell
+php artisan collect:prefeitura-organizations --max-pages=10 --per-page=100
+```
+
+Somente registros válidos são normalizados. Vínculos entre órgãos exigem correspondência nominal exata e única; o nome do responsável permanece texto atribuído à fonte, sem criação automática de pessoa.
 
 ## Segurança e contribuição
 

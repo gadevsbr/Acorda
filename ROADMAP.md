@@ -21,7 +21,8 @@ Legenda: `[ ]` pendente, `[~]` em andamento, `[x]` concluído com evidência.
 
 ## Fase 2 — Pessoas
 
-- [ ] organizações, cargos, pessoas e vínculos
+- [x] organizações e hierarquia com fonte oficial
+- [ ] cargos, pessoas e vínculos funcionais
 - [ ] folha mensal sem sobrescrita histórica
 - [ ] candidatos e revisão de resolução de identidade
 

@@ -122,6 +122,12 @@ defineProps<{
                 >
                     Consulte a saúde das fontes monitoradas
                 </Link>
+                <Link
+                    :href="route('organizations.index')"
+                    class="w-fit font-semibold text-teal-700 underline decoration-teal-300 underline-offset-4 hover:text-teal-900"
+                >
+                    Conheça a estrutura organizacional
+                </Link>
             </div>
         </footer>
     </div>

@@ -87,6 +87,8 @@ php artisan collect:prefeitura-payroll --year=2026 --month=7 --max-pages=20 --pe
 
 O comando guarda execução, saúde, checkpoint e payload bruto versionado por checksum antes de qualquer normalização. O scheduler o executa diariamente às 02:15. Se o PHP local não possuir CAs configuradas, informe um bundle confiável em `COLLECTOR_CA_BUNDLE`; nunca desative a validação TLS.
 
+Alertas de indisponibilidade, schema alterado, parcialidade e resposta vazia são deduplicados em `source_alerts`. Configure `SOURCE_ALERT_EMAIL` e o mailer do Laravel para receber a primeira ocorrência e cada reabertura; falha no envio é registrada sem interromper a coleta.
+
 A página pública `/fontes` mostra a última condição observada e sempre liga para a fonte oficial.
 
 ## Segurança e contribuição

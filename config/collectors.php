@@ -7,6 +7,7 @@ return [
     'max_attempts' => (int) env('COLLECTOR_MAX_ATTEMPTS', 3),
     'retry_delay_ms' => (int) env('COLLECTOR_RETRY_DELAY_MS', 500),
     'ca_bundle' => env('COLLECTOR_CA_BUNDLE'),
+    'alert_email' => env('SOURCE_ALERT_EMAIL'),
     'payroll_per_page' => (int) env('PREFEITURA_PAYROLL_PER_PAGE', 100),
     'payroll_max_pages' => (int) env('PREFEITURA_PAYROLL_MAX_PAGES', 20),
 

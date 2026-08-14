@@ -3,6 +3,7 @@
 namespace App\Collectors\Alcobaca\Prefeitura;
 
 use App\Collectors\Support\CanonicalJson;
+use App\Collectors\Support\SourceAlertManager;
 use App\Models\CollectorCheckpoint;
 use App\Models\CollectorRun;
 use App\Models\RawSourceRecord;
@@ -23,6 +24,7 @@ final class PayrollCollector
     public function __construct(
         private readonly PrefeituraApiClient $client,
         private readonly PayrollEnvelopeValidator $validator,
+        private readonly SourceAlertManager $alertManager,
     ) {}
 
     /** @param array<string, int|string> $filters */
@@ -203,7 +205,7 @@ final class PayrollCollector
     ): void {
         $schemaKeys = $page?->records[0] ?? $page?->envelope ?? [];
 
-        SourceHealthCheck::query()->create([
+        $health = SourceHealthCheck::query()->create([
             'source_id' => $source->id,
             'checked_at' => now(),
             'status' => $status,
@@ -213,6 +215,8 @@ final class PayrollCollector
             'schema_checksum' => $schemaKeys === [] ? null : hash('sha256', CanonicalJson::encode(array_keys($schemaKeys))),
             'message' => mb_substr($message, 0, 4000),
         ]);
+
+        $this->alertManager->evaluate($source, $health);
     }
 
     private function parseSourceDate(mixed $value): ?CarbonImmutable

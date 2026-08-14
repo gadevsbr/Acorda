@@ -43,4 +43,9 @@ class Source extends Model
     {
         return $this->hasMany(SourceHealthCheck::class);
     }
+
+    public function alerts(): HasMany
+    {
+        return $this->hasMany(SourceAlert::class);
+    }
 }

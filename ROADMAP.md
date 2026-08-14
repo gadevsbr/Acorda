@@ -17,7 +17,7 @@ Legenda: `[ ]` pendente, `[~]` em andamento, `[x]` concluído com evidência.
 - [x] fontes e saúde das fontes
 - [x] registros brutos, checkpoints e execuções de coletores
 - [x] primeiro cliente da API da Prefeitura com fixture e validação de schema
-- [~] alertas de quebra e observabilidade (mudança de schema, indisponibilidade, vazio e métricas persistidos; notificação externa pendente)
+- [x] alertas de quebra e observabilidade com deduplicação e e-mail opcional
 
 ## Fase 2 — Pessoas
 

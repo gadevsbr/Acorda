@@ -3,12 +3,15 @@
 namespace Tests\Feature\Collectors;
 
 use App\Collectors\Alcobaca\Prefeitura\PayrollCollector;
+use App\Mail\SourceAlertMail;
 use App\Models\CollectorCheckpoint;
 use App\Models\RawSourceRecord;
+use App\Models\SourceAlert;
 use App\Models\SourceHealthCheck;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\Client\Request;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Validation\ValidationException;
 use Tests\TestCase;
 
@@ -119,6 +122,8 @@ class PayrollCollectorTest extends TestCase
 
     public function test_an_empty_but_valid_source_is_marked_partial_not_absent(): void
     {
+        config()->set('collectors.alert_email', 'alerts@example.test');
+        Mail::fake();
         Http::fake([
             '*' => Http::response([
                 'total' => 0,
@@ -136,6 +141,17 @@ class PayrollCollectorTest extends TestCase
         $health = SourceHealthCheck::query()->sole();
         $this->assertSame('partial', $health->status);
         $this->assertStringContainsString('não confirma ausência', $health->message);
+        $this->assertDatabaseHas('source_alerts', [
+            'type' => 'unexpected_empty',
+            'severity' => 'warning',
+            'status' => 'open',
+            'notification_status' => 'sent',
+        ]);
+        Mail::assertSent(SourceAlertMail::class, 1);
+
+        app(PayrollCollector::class)->collect(maxPages: 1, perPage: 50);
+        $this->assertSame(2, SourceAlert::query()->sole()->occurrences);
+        Mail::assertSent(SourceAlertMail::class, 1);
     }
 
     public function test_a_schema_change_fails_closed_and_records_the_failure(): void
@@ -149,6 +165,11 @@ class PayrollCollectorTest extends TestCase
             $this->assertDatabaseHas('collector_runs', ['status' => 'failed']);
             $this->assertDatabaseHas('source_health_checks', ['status' => 'schema_changed']);
             $this->assertDatabaseHas('sources', ['status' => 'schema_changed']);
+            $this->assertDatabaseHas('source_alerts', [
+                'type' => 'schema_changed',
+                'severity' => 'critical',
+                'status' => 'open',
+            ]);
             $this->assertDatabaseCount('raw_source_records', 0);
         }
     }

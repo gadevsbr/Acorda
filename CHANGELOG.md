@@ -4,6 +4,12 @@ O formato segue Keep a Changelog e o projeto usa versionamento semântico.
 
 ## [Unreleased]
 
+## [0.2.1] — 2026-08-14
+
+### Added
+
+- Alertas deduplicados com resolução automática e e-mail opcional que não bloqueia a coleta.
+
 ## [0.2.0] — 2026-08-14
 
 ### Added

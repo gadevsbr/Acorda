@@ -12,7 +12,7 @@ O fluxo futuro obrigatório é fonte → registro bruto → validação → norm
 
 ## Estado atual
 
-Fase 0 publicada como `v0.1.0`. A Fase 1 foi publicada nas versões `v0.2.0` a `v0.2.2`. A Fase 2 começou pela estrutura organizacional: coletor, normalização, hierarquia e páginas `/orgaos` e `/orgao/{slug}` estão implementados. O cadastro público está desabilitado e o login será reservado ao painel administrativo. Ainda não existem pessoas, cargos ou folha normalizada.
+Fase 0 publicada como `v0.1.0`. A Fase 1 foi publicada nas versões `v0.2.0` a `v0.2.2`. A primeira entrega da Fase 2 foi publicada como `v0.3.0`, após aprovação do CI no commit `6f29ae9`: coletor, normalização, hierarquia e páginas `/orgaos` e `/orgao/{slug}` estão implementados. O cadastro público está desabilitado e o login será reservado ao painel administrativo. Ainda não existem pessoas, cargos ou folha normalizada.
 
 Evidências atuais: 44 testes PHP com 196 asserções, Pint, ESLint, `vue-tsc`, build Vite e smoke HTTP 200 passaram. As migrations passaram no MySQL 8.4.7. A coleta organizacional real trouxe 12 registros em uma página, normalizou os 12 com proveniência e vinculou exatamente o Departamento de Tributação à Secretaria de Finanças. A folha continua HTTP 200 com `total=0` e status `partial`. Docker ainda não está instalado e o Compose continua sem execução comprovada.
 

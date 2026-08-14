@@ -29,10 +29,12 @@ Observações: a documentação oficial lista os campos necessários. A resposta
 - Página oficial de encaminhamento: `https://alcobaca.ba.gov.br/link/transparencia-rh.php`
 - Servidores ativos: formulário KBF `formID=229`
 - Remuneração por servidor: formulário KBF `formID=278`
-- API: nenhuma API estruturada foi localizada na investigação de 2026-08-14
-- Formato observado: aplicação web com iframe/formulário
-- Status: descoberta; não integrada
-- Observações: é o destino atual publicado pelo site oficial da Prefeitura. Três tentativas diretas locais expiraram sem resposta em até 40 segundos. Antes de qualquer automação, investigar chamadas estruturadas e termos; não criar scraper HTML frágil.
+- API pública documentada: nenhuma localizada
+- Formato observado: aplicação Webrun com sessão, execução de fluxo e grade estruturada
+- Último teste: 2026-08-14, HTTP 200, 1.628 vínculos ativos, sete campos por linha
+- Campos: matrícula, nome, admissão, centro de custo, regime, cargo/função e jornada mensal
+- Status: operacional; servidores ativos integrados em camada bruta
+- Observações: é o destino atual publicado pelo site oficial da Prefeitura. A fonte esteve temporariamente indisponível e depois voltou a responder. O cliente confere o total declarado e interrompe a coleta se o contrato da grade mudar. Remuneração (`formID=278`) ainda não foi integrada.
 
 ## SoftHaas — Folha legada
 

@@ -17,3 +17,8 @@ Schedule::command('collect:prefeitura-organizations --max-pages=10 --per-page=10
     ->dailyAt('02:45')
     ->withoutOverlapping(120)
     ->onOneServer();
+
+Schedule::command('collect:kbf-active-employees')
+    ->dailyAt('03:15')
+    ->withoutOverlapping(120)
+    ->onOneServer();

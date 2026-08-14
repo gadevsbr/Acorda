@@ -4,6 +4,12 @@ O formato segue Keep a Changelog e o projeto usa versionamento semântico.
 
 ## [Unreleased]
 
+### Added
+
+- Cliente session-aware da grade oficial de servidores ativos do KBF.
+- Coletor raw-first com conferência fail-closed do total, validação por registro, idempotência e agendamento diário.
+- Evidência real de 1.628 vínculos ativos preservados sem registros inválidos.
+
 ## [0.3.0] — 2026-08-14
 
 ### Added

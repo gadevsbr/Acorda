@@ -71,3 +71,12 @@ Consequências: `/fontes` mostra completude por dataset e cada coletor mantém s
 - Motivação: evitar hierarquia inventada por similaridade textual.
 - Alternativas: fuzzy matching; revisão manual obrigatória para todo vínculo.
 Consequências: vínculos ambíguos permanecem sem pai até revisão; nomes de responsáveis não criam pessoas automaticamente.
+
+## DEC-009 — Grade KBF com contrato fail-closed
+
+- Data: 2026-08-14
+- Status: Aceita
+- Decisão: coletar a grade Webrun oficial com sessão, preservando cada linha bruta e exigindo igualdade entre o total declarado e a quantidade analisada.
+- Motivação: o endpoint REST da folha está vazio, enquanto o destino oficial de RH contém os vínculos ativos atuais.
+- Alternativas: aguardar indefinidamente a API REST; automatizar o DOM visual; tratar a grade como API estável sem validação.
+Consequências: IDs de formulário, fluxo e componentes ficam explícitos e testados; qualquer mudança interrompe a coleta e gera alerta, sem publicar conjunto parcial. A matrícula identifica o vínculo na fonte, mas não autoriza fusão de pessoas nem comprova remuneração.

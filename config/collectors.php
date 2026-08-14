@@ -19,4 +19,11 @@ return [
         'official_url' => 'https://www.acessoinformacao.com.br/transparencia/entidades/ba/alcobaca/dados-abertos',
         'allowed_hosts' => ['www.acessoinformacao.com.br'],
     ],
+
+    'kbf' => [
+        'base_url' => env('KBF_BASE_URL', 'https://folhadepagamento.kbfsistemas.com.br/pmalcobaca_portal'),
+        'official_url' => 'https://folhadepagamento.kbfsistemas.com.br/pmalcobaca_portal/form.jsp?action=openform&formID=229&popup=true&sys=PSM',
+        'allowed_hosts' => ['folhadepagamento.kbfsistemas.com.br'],
+        'timeout_seconds' => (int) env('KBF_TIMEOUT_SECONDS', 120),
+    ],
 ];

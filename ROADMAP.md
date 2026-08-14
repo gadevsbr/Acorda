@@ -22,6 +22,7 @@ Legenda: `[ ]` pendente, `[~]` em andamento, `[x]` concluído com evidência.
 ## Fase 2 — Pessoas
 
 - [x] organizações e hierarquia com fonte oficial
+- [x] preservação bruta dos vínculos ativos do KBF (1.628 linhas; normalização ainda pendente)
 - [ ] cargos, pessoas e vínculos funcionais
 - [ ] folha mensal sem sobrescrita histórica
 - [ ] candidatos e revisão de resolução de identidade

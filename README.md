@@ -4,7 +4,7 @@ Plataforma independente de transparência pública que torna dados oficiais de A
 
 ## Estado atual
 
-A Fase 1 possui o núcleo auditável de ingestão. A Fase 2 começou pela estrutura organizacional: 12 órgãos reais foram coletados e normalizados, com páginas públicas em `/orgaos`. A folha oficial continua com resposta vazia e status parcial; ainda não há perfis de pessoas ou remunerações publicadas. Consulte [ROADMAP.md](ROADMAP.md).
+A Fase 1 possui o núcleo auditável de ingestão. A Fase 2 começou pela estrutura organizacional: 12 órgãos reais foram coletados e normalizados, com páginas públicas em `/orgaos`. A API de dados abertos da folha continua vazia, mas a grade oficial KBF voltou a responder e 1.628 vínculos ativos foram preservados em formato bruto e auditável. Ainda não há perfis de pessoas ou remunerações publicadas. Consulte [ROADMAP.md](ROADMAP.md).
 
 ## Stack
 
@@ -98,6 +98,14 @@ php artisan collect:prefeitura-organizations --max-pages=10 --per-page=100
 ```
 
 Somente registros válidos são normalizados. Vínculos entre órgãos exigem correspondência nominal exata e única; o nome do responsável permanece texto atribuído à fonte, sem criação automática de pessoa.
+
+A grade oficial de servidores ativos do KBF pode ser preservada com:
+
+```powershell
+php artisan collect:kbf-active-employees
+```
+
+O cliente mantém a sessão exigida pelo Webrun, confere o total declarado contra todas as linhas recebidas e falha fechado se o contrato da grade mudar. Esta etapa guarda os vínculos brutos; não cria identidades nem remunerações automaticamente. O scheduler executa a coleta diariamente às 03:15.
 
 ## Segurança e contribuição
 

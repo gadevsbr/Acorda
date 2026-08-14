@@ -4,6 +4,18 @@ O formato segue Keep a Changelog e o projeto usa versionamento semântico.
 
 ## [Unreleased]
 
+## [0.9.0] — 2026-08-14
+
+### Added
+
+- Coletor raw-first comum para fornecedores, contratos, licitações e fiscais de contrato.
+- Validação específica, paginação, checkpoint, saúde, comando e agendamento por recurso.
+- Carga real de 361 fornecedores, 1.275 contratos e 1.073 licitações sem registros inválidos.
+
+### Changed
+
+- Campos opcionais do OpenAPI permanecem nulos sem invalidar o registro; somente identidade e tipos presentes são exigidos.
+
 ## [0.8.0] — 2026-08-14
 
 ### Added

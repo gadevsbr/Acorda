@@ -37,3 +37,10 @@ Schedule::command('collect:prefeitura-expenses --max-pages=20 --per-page=100')
     ->dailyAt('05:00')
     ->withoutOverlapping(120)
     ->onOneServer();
+
+foreach (['fornecedores', 'contratos', 'licitacoes', 'fiscais-contrato'] as $index => $resource) {
+    Schedule::command("collect:prefeitura-procurement {$resource} --max-pages=20 --per-page=100")
+        ->dailyAt('05:'.str_pad((string) (($index + 1) * 10), 2, '0', STR_PAD_LEFT))
+        ->withoutOverlapping(120)
+        ->onOneServer();
+}

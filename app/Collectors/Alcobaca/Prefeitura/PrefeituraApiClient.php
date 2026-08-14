@@ -5,6 +5,7 @@ namespace App\Collectors\Alcobaca\Prefeitura;
 use Illuminate\Http\Client\ConnectionException;
 use Illuminate\Http\Client\PendingRequest;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Validator;
 use InvalidArgumentException;
 use RuntimeException;
 
@@ -96,6 +97,37 @@ final class PrefeituraApiClient
             lastModified: $response->header('Last-Modified'),
             responseTimeMs: (int) round((hrtime(true) - $startedAt) / 1_000_000),
         );
+    }
+
+    /** @throws ConnectionException */
+    public function openDataPage(string $resource, int $page, int $perPage): ExpensePage
+    {
+        if (! in_array($resource, ['contratos', 'licitacoes', 'fornecedores', 'fiscais-contrato'], true)) {
+            throw new InvalidArgumentException('Recurso de dados abertos não permitido.');
+        }
+        if ($page < 1 || $perPage < 1 || $perPage > 500) {
+            throw new InvalidArgumentException('Página deve ser >= 1 e per_page deve estar entre 1 e 500.');
+        }
+        $url = rtrim((string) config('collectors.prefeitura.base_url'), '/').'/'.$resource;
+        $this->assertAllowedUrl($url);
+        $query = ['page' => $page, 'per_page' => $perPage];
+        $startedAt = hrtime(true);
+        $response = $this->request()->get($url, $query);
+        if ($response->redirect()) {
+            throw new RuntimeException('Redirecionamento recusado pelo coletor para preservar a allowlist.');
+        }
+        $response->throw();
+        $payload = $response->json();
+        if (! is_array($payload)) {
+            throw new RuntimeException('A API não retornou um objeto JSON.');
+        }
+        Validator::make($payload, [
+            'total' => ['required', 'integer', 'min:0'], 'per_page' => ['required', 'integer', 'min:1'],
+            'current_page' => ['required', 'integer', 'min:1'], 'last_page' => ['required', 'integer', 'min:0'],
+            'data' => ['present', 'array'], 'data.*' => ['array'],
+        ])->validate();
+
+        return new ExpensePage($payload['data'], $payload, (int) $payload['total'], (int) $payload['current_page'], (int) $payload['last_page'], $url.'?'.http_build_query($query), $response->status(), $response->header('Content-Type'), $response->header('ETag'), $response->header('Last-Modified'), (int) round((hrtime(true) - $startedAt) / 1_000_000));
     }
 
     /** @throws ConnectionException */

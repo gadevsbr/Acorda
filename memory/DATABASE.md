@@ -29,4 +29,6 @@ As conexões MySQL/MariaDB fixam o engine `InnoDB`. Isso garante transações e 
 
 Despesas permanecem em `raw_source_records`: nenhuma tabela normalizada será criada antes de observar registros reais da fonte.
 
+Fornecedores, contratos e licitações também estão preservados em `raw_source_records` antes da migration normalizada. As futuras relações usarão IDs oficiais; identificadores de pessoa física terão exposição pública mascarada.
+
 A unicidade de `raw_source_records` é `(source_id, external_id, checksum)`: repetir o mesmo payload é idempotente; mudar conteúdo cria uma revisão auditável. Exclusões de fonte são restritas quando há histórico bruto.

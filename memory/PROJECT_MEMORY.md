@@ -25,4 +25,4 @@ Evidências atuais: 61 testes PHP com 349 asserções, Pint, ESLint, `vue-tsc`, 
 
 ## Próximo passo
 
-Continuar a Fase 4 quando a fonte de despesas entregar registros reais; então normalizar despesas e fornecedores. Em paralelo, iniciar contratos e licitações pelo mesmo fluxo raw-first.
+Normalizar e publicar fornecedores, contratos e licitações já preservados, mascarando CPF de pessoa física. Despesas e fiscais continuam aguardando registros reais da fonte.

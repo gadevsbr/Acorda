@@ -52,3 +52,10 @@ PNCP, TSE, Câmara de Alcobaça e TCM-BA permanecem planejados e não integrados
 - Campos documentados: código, data, unidade gestora, serviço, credor, CPF/CNPJ, função, subfunção, processo, fonte, natureza, fase, valor, empenho, diária, licitação e contrato.
 - Último teste: 2026-08-14, HTTP 200, envelope JSON válido, `total=0`.
 - Status: parcial; coletor raw-first integrado, sem publicação enquanto não houver registro real validado.
+
+## Prefeitura Municipal de Alcobaça — Compras públicas
+
+- APIs: `/fornecedores`, `/contratos`, `/licitacoes` e `/fiscais-contrato`.
+- Último teste: 2026-08-14, HTTP 200; 361 fornecedores, 1.275 contratos, 1.073 licitações e zero fiscais.
+- Status: três datasets operacionais e fiscais parcial.
+- Privacidade: CPF de fornecedor pessoa física não será exposto integralmente na futura interface pública.

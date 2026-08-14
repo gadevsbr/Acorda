@@ -125,3 +125,12 @@ Consequências: homônimos aparecem separadamente na busca. Cada vínculo e paga
 - Motivação: o OpenAPI documenta o schema, porém a resposta atual contém zero registros e não permite validar conteúdo municipal concreto.
 - Alternativas: fabricar dados públicos; declarar ausência de despesas; bloquear toda a integração.
 Consequências: coletor, checkpoint, saúde e alertas ficam operacionais; a Fase 4 permanece em andamento e a interface não conclui sem evidência.
+
+## DEC-015 — Compras públicas preservadas antes da exposição
+
+- Data: 2026-08-14
+- Status: Aceita
+- Decisão: preservar fornecedores, contratos e licitações integralmente no bruto antes de criar entidades e relações públicas; aceitar nulos previstos no OpenAPI.
+- Motivação: relações entre contratada, fornecedor e licitação precisam usar IDs oficiais, e CPF de pessoa física exige tratamento de privacidade.
+- Alternativas: publicar diretamente o JSON; rejeitar campos opcionais nulos; relacionar apenas por nome.
+Consequências: 2.709 registros reais estão auditáveis e prontos para normalização conservadora; nenhuma identidade ou relação é inferida por similaridade textual.

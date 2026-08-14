@@ -121,6 +121,8 @@ Valores monetários são guardados em centavos inteiros. Correções criam revis
 
 As despesas oficiais são preservadas por `php artisan collect:prefeitura-expenses --max-pages=20 --per-page=100`. O recurso está integrado em modo raw-first e roda diariamente às 05:00. Enquanto a API oficial responder vazia, nenhuma despesa ou fornecedor é inferido ou publicado.
 
+Fornecedores, contratos, licitações e fiscais usam `php artisan collect:prefeitura-procurement {resource}`. Os quatro recursos são coletados diariamente entre 05:10 e 05:40; respostas vazias permanecem parciais e campos opcionais ausentes não são inventados.
+
 Possíveis identidades repetidas são geradas sem fusão automática:
 
 ```powershell

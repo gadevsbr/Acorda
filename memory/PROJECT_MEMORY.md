@@ -12,7 +12,7 @@ O fluxo futuro obrigatório é fonte → registro bruto → validação → norm
 
 ## Estado atual
 
-Fase 0 publicada como `v0.1.0`. A Fase 1 foi publicada nas versões `v0.2.0` a `v0.2.2`. A primeira entrega da Fase 2 foi publicada como `v0.3.0`, após aprovação do CI no commit `6f29ae9`: coletor, normalização, hierarquia e páginas `/orgaos` e `/orgao/{slug}` estão implementados. O cadastro público está desabilitado e o login será reservado ao painel administrativo. Ainda não existem pessoas, cargos ou folha normalizada.
+Fase 0 publicada como `v0.1.0`. A Fase 1 foi publicada nas versões `v0.2.0` a `v0.2.2`. A estrutura organizacional da Fase 2 saiu em `v0.3.0`; a preservação bruta dos servidores ativos KBF foi publicada em `v0.3.1`, após aprovação do CI no commit `39cf57f`. O cadastro público está desabilitado e o login será reservado ao painel administrativo. Ainda não existem pessoas, cargos ou folha normalizada.
 
 Evidências atuais: 47 testes PHP com 208 asserções, Pint, ESLint, `vue-tsc` e build Vite passaram. Composer e npm audit não encontraram vulnerabilidades conhecidas. As migrations passaram no MySQL 8.4.7 e o scheduler lista as três coletas. A coleta organizacional real trouxe 12 registros em uma página. A API da folha continua vazia, mas o KBF voltou a responder: a execução 5 preservou 1.628 vínculos ativos válidos e a execução 6 confirmou idempotência, sem duplicação. Docker ainda não está instalado e o Compose continua sem execução comprovada.
 

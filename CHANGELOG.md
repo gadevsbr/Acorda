@@ -4,6 +4,18 @@ O formato segue Keep a Changelog e o projeto usa versionamento semântico.
 
 ## [Unreleased]
 
+## [0.7.0] — 2026-08-14
+
+### Added
+
+- Busca pública por nome ou matrícula, limitada a 50 correspondências e sem diretório irrestrito.
+- Perfis funcionais com vínculos, remuneração por competência, versões corrigidas e proveniência oficial por registro.
+- Avisos explícitos sobre homônimos, identidade civil e ausência inconclusiva de resultados.
+
+### Changed
+
+- Home passou a oferecer acesso direto à busca de pessoas e aos valores individuais publicados.
+
 ## [0.6.1] — 2026-08-14
 
 ### Fixed

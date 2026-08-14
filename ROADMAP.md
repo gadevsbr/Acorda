@@ -30,9 +30,9 @@ Legenda: `[ ]` pendente, `[~]` em andamento, `[x]` concluído com evidência.
 ## Fase 3 — Busca e perfil
 
 - [x] home cívica conectada aos dados reais
-- [ ] busca pública de pessoas
-- [ ] perfil com remuneração, histórico e fonte oficial
-- [ ] pipeline real validado de ponta a ponta
+- [x] busca pública de pessoas
+- [x] perfil com remuneração, histórico e fonte oficial
+- [x] pipeline real validado de ponta a ponta (coleta → normalização → busca → perfil)
 
 ## Fase 4 — Dinheiro público
 

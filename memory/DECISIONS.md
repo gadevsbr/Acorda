@@ -107,3 +107,12 @@ Consequências: cada revisão aponta para o registro bruto e para a revisão sub
 - Motivação: nome igual é evidência fraca; a decisão precisa ser auditável e reversível antes de qualquer identidade canônica futura.
 - Alternativas: fusão automática; fuzzy matching; ignorar duplicidades.
 Consequências: cada decisão exige justificativa e registra revisor e horário. Os registros funcionais e suas proveniências permanecem separados mesmo quando um candidato é confirmado.
+
+## DEC-013 — Perfil público representa identidade funcional
+
+- Data: 2026-08-14
+- Status: Aceita
+- Decisão: publicar um perfil por pessoa de fonte/matrícula, sem consolidar candidatos confirmados nem apresentar o registro como identidade civil.
+- Motivação: a fonte identifica vínculos por matrícula e nomes iguais não bastam para afirmar que se trata da mesma pessoa natural.
+- Alternativas: unir perfis por nome; aplicar decisões administrativas diretamente ao público; omitir remuneração individual.
+Consequências: homônimos aparecem separadamente na busca. Cada vínculo e pagamento aponta para sua própria proveniência; revisões substituídas continuam visíveis e ausências são descritas como inconclusivas.

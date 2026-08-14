@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Employment extends Model
 {
@@ -37,5 +38,10 @@ class Employment extends Model
     public function organization(): BelongsTo
     {
         return $this->belongsTo(Organization::class);
+    }
+
+    public function payrollRecords(): HasMany
+    {
+        return $this->hasMany(PayrollRecord::class);
     }
 }

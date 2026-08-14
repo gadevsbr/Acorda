@@ -4,7 +4,7 @@ Plataforma independente de transparência pública que torna dados oficiais de A
 
 ## Estado atual
 
-A Fase 0 estabelece a fundação executável. Ainda não há dados públicos importados e nenhuma tela deve ser interpretada como MVP de dados pronto. Consulte [ROADMAP.md](ROADMAP.md).
+A Fase 1 possui o núcleo de ingestão bruta e o primeiro coletor da folha. A fonte oficial respondeu com schema válido, porém sem registros na última consulta; por isso o status público é parcial. Ainda não há perfis ou dados normalizados e nenhuma tela deve ser interpretada como MVP de dados pronto. Consulte [ROADMAP.md](ROADMAP.md).
 
 ## Stack
 
@@ -79,7 +79,15 @@ Compile `public/build` localmente ou na CI, instale dependências com `composer 
 
 ## Coletores
 
-Os coletores serão independentes e idempotentes em `app/Collectors/`. Nenhum coletor real foi habilitado na Fase 0. Toda futura ingestão deverá armazenar o registro bruto antes da normalização e usar fixtures nos testes.
+Os coletores são independentes e idempotentes em `app/Collectors/`. A folha da Prefeitura pode ser consultada com:
+
+```powershell
+php artisan collect:prefeitura-payroll --year=2026 --month=7 --max-pages=20 --per-page=100
+```
+
+O comando guarda execução, saúde, checkpoint e payload bruto versionado por checksum antes de qualquer normalização. O scheduler o executa diariamente às 02:15. Se o PHP local não possuir CAs configuradas, informe um bundle confiável em `COLLECTOR_CA_BUNDLE`; nunca desative a validação TLS.
+
+A página pública `/fontes` mostra a última condição observada e sempre liga para a fonte oficial.
 
 ## Segurança e contribuição
 

@@ -1,0 +1,25 @@
+{
+    "total": 3,
+    "per_page": 2,
+    "current_page": 2,
+    "last_page": 2,
+    "next_page_url": null,
+    "prev_page_url": "https://www.acessoinformacao.com.br/example?page=1",
+    "from": 3,
+    "to": 3,
+    "data": [
+        {
+            "id": "fixture-003",
+            "funcionario": "SERVIDOR EXEMPLO TRES",
+            "entidade": "PREFEITURA MUNICIPAL DE ALCOBACA",
+            "matricula": "TEST-003",
+            "cargo": "CARGO DE TESTE",
+            "vinculo": "EFETIVO",
+            "lotacao": "UNIDADE DE TESTE",
+            "mes_de_referencia": "07/2026",
+            "salario_bruto": 4500,
+            "salario_liquido": 3800,
+            "total_de_descontos": 700
+        }
+    ]
+}

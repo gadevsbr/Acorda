@@ -4,6 +4,22 @@ O formato segue Keep a Changelog e o projeto usa versionamento semântico.
 
 ## [Unreleased]
 
+## [0.2.0] — 2026-08-14
+
+### Added
+
+- Núcleo auditável com fontes, saúde, execuções, checkpoints e registros brutos.
+- Cliente da folha da Prefeitura com paginação, retries, timeout, allowlist e TLS verificável.
+- Versionamento de payload por checksum e retomada segura de paginação.
+- Comando e scheduler diário para a coleta de folha.
+- Página pública `/fontes` com condição observada e link oficial.
+- Fixtures sanitizadas e testes de paginação, idempotência, revisão, schema e fonte vazia.
+
+### Security
+
+- Redirects recusados pelo cliente e domínio limitado à allowlist oficial.
+- Mudança de schema interrompe publicação e gera saúde `schema_changed`.
+
 ## [0.1.0] — 2026-08-14
 
 ### Added

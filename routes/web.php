@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SourceController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -9,6 +10,8 @@ Route::get('/', function () {
         'canLogin' => Route::has('login'),
     ]);
 });
+
+Route::get('/fontes', [SourceController::class, 'index'])->name('sources.index');
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');

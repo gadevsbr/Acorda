@@ -1,0 +1,38 @@
+{
+    "total": 3,
+    "per_page": 2,
+    "current_page": 1,
+    "last_page": 2,
+    "next_page_url": "https://www.acessoinformacao.com.br/example?page=2",
+    "prev_page_url": null,
+    "from": 1,
+    "to": 2,
+    "data": [
+        {
+            "id": "fixture-001",
+            "funcionario": "SERVIDOR EXEMPLO UM",
+            "entidade": "PREFEITURA MUNICIPAL DE ALCOBACA",
+            "matricula": "TEST-001",
+            "cargo": "CARGO DE TESTE",
+            "vinculo": "EFETIVO",
+            "lotacao": "UNIDADE DE TESTE",
+            "mes_de_referencia": "07/2026",
+            "salario_bruto": 5000.0,
+            "salario_liquido": 4100.0,
+            "total_de_descontos": 900.0
+        },
+        {
+            "id": "fixture-002",
+            "funcionario": "SERVIDOR EXEMPLO DOIS",
+            "entidade": "PREFEITURA MUNICIPAL DE ALCOBACA",
+            "matricula": "TEST-002",
+            "cargo": "OUTRO CARGO DE TESTE",
+            "vinculo": "CONTRATADO",
+            "lotacao": "OUTRA UNIDADE DE TESTE",
+            "mes_de_referencia": "07/2026",
+            "salario_bruto": 3000,
+            "salario_liquido": 2600,
+            "total_de_descontos": 400
+        }
+    ]
+}

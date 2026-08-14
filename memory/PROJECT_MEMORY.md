@@ -12,9 +12,9 @@ O fluxo futuro obrigatório é fonte → registro bruto → validação → norm
 
 ## Estado atual
 
-Fase 0 implementada, validada e publicada como `v0.1.0` em 2026-08-14. O cadastro público está desabilitado e o login será reservado ao painel administrativo. Nenhum coletor ou dado público real foi implementado ainda.
+Fase 0 publicada como `v0.1.0`. Na Fase 1 foram implementados fontes, saúde, registros brutos, execuções, checkpoints, cliente/coletor da folha e a página `/fontes`. O cadastro público está desabilitado e o login será reservado ao painel administrativo. Ainda não existem pessoas ou folha normalizada.
 
-Evidências locais: 24 testes PHP com 60 asserções, Pint, ESLint, `vue-tsc`, build Vite, migrations limpas em SQLite e smoke HTTP 200 passaram. As migrations também passaram no MySQL 8.4.7 local e todas as tabelas foram confirmadas como InnoDB. A primeira execução da CI no GitHub passou em 2026-08-14; actions foram atualizadas para a geração baseada em Node 24 após aviso de depreciação. Docker não está instalado na máquina atual, portanto o Compose foi criado, mas sua execução ainda não foi comprovada.
+Evidências atuais: 37 testes PHP com 129 asserções, Pint, ESLint, `vue-tsc`, build Vite e smoke HTTP 200 em `/` e `/fontes` passaram. As novas migrations passaram no MySQL 8.4.7. A coleta real controlada retornou HTTP 200 e envelope válido, mas `total=0`; foi corretamente persistida como `partial`, sem inferir ausência de servidores. O WampServer exigiu `COLLECTOR_CA_BUNDLE` local; a verificação TLS permaneceu habilitada. Docker ainda não está instalado e o Compose continua sem execução comprovada.
 
 ## Restrições
 
@@ -25,4 +25,4 @@ Evidências locais: 24 testes PHP com 60 asserções, Pint, ESLint, `vue-tsc`, b
 
 ## Próximo passo
 
-Fase 1: modelar fontes, saúde, registros brutos, execuções e checkpoints; depois integrar o primeiro endpoint oficial da Prefeitura usando fixtures de teste.
+Concluir a observabilidade da Fase 1 com notificação externa configurável. Em paralelo, investigar competências históricas disponíveis sem varredura agressiva. Só iniciar a normalização da Fase 2 quando houver payload real ou fixture sanitizada derivada de resposta oficial não vazia.

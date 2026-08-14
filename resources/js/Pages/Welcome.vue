@@ -116,6 +116,12 @@ defineProps<{
             >
                 <strong class="text-slate-900">Acorda Alcobaça</strong>
                 <span>Projeto independente. Não é um portal oficial da Prefeitura.</span>
+                <Link
+                    :href="route('sources.index')"
+                    class="mt-2 w-fit font-semibold text-teal-700 underline decoration-teal-300 underline-offset-4 hover:text-teal-900"
+                >
+                    Consulte a saúde das fontes monitoradas
+                </Link>
             </div>
         </footer>
     </div>

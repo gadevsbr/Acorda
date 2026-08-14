@@ -14,10 +14,10 @@ Legenda: `[ ]` pendente, `[~]` em andamento, `[x]` concluído com evidência.
 
 ## Fase 1 — Núcleo de dados
 
-- [ ] fontes e saúde das fontes
-- [ ] registros brutos, checkpoints e execuções de coletores
-- [ ] primeiro cliente da API da Prefeitura com fixture e validação de schema
-- [ ] alertas de quebra e observabilidade
+- [x] fontes e saúde das fontes
+- [x] registros brutos, checkpoints e execuções de coletores
+- [x] primeiro cliente da API da Prefeitura com fixture e validação de schema
+- [~] alertas de quebra e observabilidade (mudança de schema, indisponibilidade, vazio e métricas persistidos; notificação externa pendente)
 
 ## Fase 2 — Pessoas
 

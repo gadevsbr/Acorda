@@ -1,20 +1,18 @@
 # Fontes de dados
 
-Nenhuma fonte está integrada ou foi validada nesta fase.
-
 ## Prefeitura Municipal de Alcobaça — Dados Abertos
 
 Entidade: Prefeitura Municipal de Alcobaça (BA)  
 URL: `https://www.acessoinformacao.com.br/transparencia/entidades/ba/alcobaca/dados-abertos`  
-API: endpoints a confirmar por descoberta documentada  
-Formato: esperado JSON/estrutura publicada pelo provedor  
-Método: API REST quando houver endpoint estruturado; sem scraping equivalente  
-Autenticação: a verificar  
-Paginação: a verificar  
-Rate limit: não publicado/por verificar  
+- API: `/folha-pagamento` integrada; demais endpoints planejados
+- Formato: JSON ou XML por `Accept`; o coletor usa JSON
+- Método: GET REST, sem scraping
+- Autenticação: nenhuma observada
+- Paginação: `page` iniciado em 1; documentação informa `per_page` até 500
+- Rate limit: não publicado; usar execução diária, retries moderados e sem varredura agressiva
 Campos: folha, autoridades, contratos, fiscais, licitações, despesas, documentos e diários  
-Último teste: não testado  
-Status: não integrado  
-Observações: a primeira integração será folha de pagamento; verificar termos, schema e comportamento real antes de codificar.
+- Último teste: 2026-08-14, HTTP 200, JSON válido, `total=0`, `per_page=50`, `last_page=0`
+- Status: parcial
+Observações: a documentação oficial lista os campos necessários. A resposta vazia atual não confirma ausência de servidores nem indisponibilidade histórica. O servidor não retornou ETag ou Last-Modified no teste controlado.
 
 PNCP, TSE, Câmara de Alcobaça e TCM-BA permanecem planejados e não integrados.

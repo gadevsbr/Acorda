@@ -35,3 +35,21 @@ Decisão: manter Compose para desenvolvimento reproduzível, sem torná-lo requi
 Motivação: o alvo de produção é hospedagem compartilhada.  
 Alternativas: deploy exclusivamente conteinerizado.  
 Consequências: os dois caminhos precisam permanecer documentados e testáveis.
+
+## DEC-005 — Revisões brutas por checksum
+
+- Data: 2026-08-14
+- Status: Aceita
+- Decisão: identificar cada versão bruta por fonte, ID externo e SHA-256 de JSON canônico.
+- Motivação: reprocessamento idempotente sem apagar alterações históricas da fonte.
+- Alternativas: sobrescrever pelo ID externo; guardar somente o último payload.
+Consequências: registros repetidos não duplicam e alterações criam nova versão; o volume cresce de forma auditável.
+
+## DEC-006 — Fonte vazia é estado parcial
+
+- Data: 2026-08-14
+- Status: Aceita
+- Decisão: resposta válida com zero registros recebe saúde `partial`.
+- Motivação: ausência na resposta não comprova ausência do fato nem completude da fonte.
+- Alternativas: considerar operacional; considerar indisponível.
+Consequências: a interface informa a limitação e não publica conclusões negativas.

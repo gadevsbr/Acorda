@@ -6,6 +6,7 @@
 | Prefeitura / Estrutura Organizacional | Preservar e normalizar órgãos | paginação concluída; próxima página 1 | 2026-08-14 | 12 | nenhum na execução validada | operacional |
 | Prefeitura / KBF Servidores Ativos | Preservar vínculos funcionais brutos | grade integral conferida pelo total | 2026-08-14 | 1.628 | nenhum nas execuções 5 e 6 | operacional |
 | Prefeitura / KBF Remuneração | Preservar e normalizar folha mensal | competência 2026-07 integral | 2026-08-14 | 1.556 | nenhum nas execuções 9 e 10 | operacional |
+| Prefeitura / Despesas | Preservar despesas brutas | paginação concluída; próxima página 1 | 2026-08-14 | 0 | resposta oficial vazia na execução 11 | parcial |
 
 Atualize esta tabela após cada execução relevante. Falha ou resposta vazia nunca deve apagar dados previamente coletados.
 
@@ -20,3 +21,5 @@ Servidores ativos KBF: `php artisan collect:kbf-active-employees`, diariamente �
 Remuneração KBF: `php artisan collect:kbf-payroll --month=7 --year=2026`, diariamente às 03:45 usando o mês anterior por padrão, versão `1.0.0`. A execução 9 criou e normalizou 1.556 pagamentos; a execução 10 confirmou idempotência. Totais: R$ 5.606.139,77 brutos, R$ 1.415.337,60 em descontos e R$ 4.190.802,17 líquidos. Foram ligados 1.548 pagamentos a vínculos por matrícula; oito permaneceram sem associação.
 
 Resolução de identidade: `php artisan identity:generate-candidates`, diariamente às 04:15. A execução real encontrou 42 grupos e criou 42 candidatos. O processo só usa nome normalizado exatamente igual e nunca confirma nem funde identidades automaticamente.
+
+Despesas: `php artisan collect:prefeitura-expenses`, diariamente às 05:00, versão `1.0.0`. A execução 11 recebeu HTTP 200 e `total=0`; registrou saúde parcial e não inferiu ausência de despesas ou fornecedores.

@@ -36,7 +36,7 @@ Legenda: `[ ]` pendente, `[~]` em andamento, `[x]` concluído com evidência.
 
 ## Fase 4 — Dinheiro público
 
-- [ ] despesas e fornecedores
+- [~] despesas e fornecedores (coleta raw-first integrada; fonte oficial respondeu vazia em 2026-08-14)
 - [ ] contratos, licitações e fiscais
 
 ## Fases seguintes

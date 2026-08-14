@@ -27,4 +27,6 @@ As conexões MySQL/MariaDB fixam o engine `InnoDB`. Isso garante transações e 
 - `payroll_records`: pagamento por competência e tipo de cálculo, valores em centavos, vínculo opcional e cadeia imutável de revisões.
 - `identity_candidates`: pares ordenados de pessoas, evidência, estado da revisão, justificativa, usuário revisor e horário.
 
+Despesas permanecem em `raw_source_records`: nenhuma tabela normalizada será criada antes de observar registros reais da fonte.
+
 A unicidade de `raw_source_records` é `(source_id, external_id, checksum)`: repetir o mesmo payload é idempotente; mudar conteúdo cria uma revisão auditável. Exclusões de fonte são restritas quando há histórico bruto.

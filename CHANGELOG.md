@@ -4,6 +4,17 @@ O formato segue Keep a Changelog e o projeto usa versionamento semântico.
 
 ## [Unreleased]
 
+## [0.8.0] — 2026-08-14
+
+### Added
+
+- Cliente e coletor paginado para despesas oficiais, com allowlist, validação, checksum, checkpoint e histórico bruto idempotente.
+- Comando `collect:prefeitura-expenses` e agendamento diário compatível com hospedagem compartilhada.
+
+### Security
+
+- Resposta oficial vazia recebe estado parcial e não comprova inexistência de despesas ou fornecedores.
+
 ## [0.7.0] — 2026-08-14
 
 ### Added

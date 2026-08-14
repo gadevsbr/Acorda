@@ -13,6 +13,7 @@ final class PrefeituraApiClient
     public function __construct(
         private readonly PayrollEnvelopeValidator $validator,
         private readonly OrganizationalStructureValidator $organizationalStructureValidator,
+        private readonly ExpenseValidator $expenseValidator,
     ) {}
 
     /**
@@ -63,6 +64,37 @@ final class PrefeituraApiClient
             etag: $response->header('ETag'),
             lastModified: $response->header('Last-Modified'),
             responseTimeMs: $responseTimeMs,
+        );
+    }
+
+    /** @throws ConnectionException */
+    public function expensePage(int $page, int $perPage, array $filters = []): ExpensePage
+    {
+        if ($page < 1 || $perPage < 1 || $perPage > 500) {
+            throw new InvalidArgumentException('Página deve ser >= 1 e per_page deve estar entre 1 e 500.');
+        }
+        $url = rtrim((string) config('collectors.prefeitura.base_url'), '/').'/despesas';
+        $this->assertAllowedUrl($url);
+        $query = array_merge($filters, ['page' => $page, 'per_page' => $perPage]);
+        $startedAt = hrtime(true);
+        $response = $this->request()->get($url, $query);
+        if ($response->redirect()) {
+            throw new RuntimeException('Redirecionamento recusado pelo coletor para preservar a allowlist.');
+        }
+        $response->throw();
+        $payload = $response->json();
+        if (! is_array($payload)) {
+            throw new RuntimeException('A API de despesas não retornou um objeto JSON.');
+        }
+        $this->expenseValidator->validateEnvelope($payload);
+
+        return new ExpensePage(
+            records: $payload['data'], envelope: $payload, total: (int) $payload['total'],
+            currentPage: (int) $payload['current_page'], lastPage: (int) $payload['last_page'],
+            url: $url.'?'.http_build_query($query), httpStatus: $response->status(),
+            contentType: $response->header('Content-Type'), etag: $response->header('ETag'),
+            lastModified: $response->header('Last-Modified'),
+            responseTimeMs: (int) round((hrtime(true) - $startedAt) / 1_000_000),
         );
     }
 

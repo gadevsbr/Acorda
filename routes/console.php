@@ -32,3 +32,8 @@ Schedule::command('identity:generate-candidates')
     ->dailyAt('04:15')
     ->withoutOverlapping(30)
     ->onOneServer();
+
+Schedule::command('collect:prefeitura-expenses --max-pages=20 --per-page=100')
+    ->dailyAt('05:00')
+    ->withoutOverlapping(120)
+    ->onOneServer();

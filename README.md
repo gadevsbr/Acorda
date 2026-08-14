@@ -119,6 +119,8 @@ php artisan collect:kbf-payroll --month=7 --year=2026
 
 Valores monetários são guardados em centavos inteiros. Correções criam revisões encadeadas, sem sobrescrever o valor anterior. A competência padrão é o mês anterior e o scheduler repete a coleta diariamente às 03:45 para detectar correções da fonte.
 
+As despesas oficiais são preservadas por `php artisan collect:prefeitura-expenses --max-pages=20 --per-page=100`. O recurso está integrado em modo raw-first e roda diariamente às 05:00. Enquanto a API oficial responder vazia, nenhuma despesa ou fornecedor é inferido ou publicado.
+
 Possíveis identidades repetidas são geradas sem fusão automática:
 
 ```powershell

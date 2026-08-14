@@ -45,3 +45,10 @@ Observações: a documentação oficial lista os campos necessários. A resposta
 - Observações: não tratar como fonte corrente. Pode servir futuramente para histórico após validação de origem, estabilidade e método de acesso.
 
 PNCP, TSE, Câmara de Alcobaça e TCM-BA permanecem planejados e não integrados.
+
+## Prefeitura Municipal de Alcobaça — Despesas
+
+- API: `/despesas`, contrato conferido no OpenAPI v3 oficial.
+- Campos documentados: código, data, unidade gestora, serviço, credor, CPF/CNPJ, função, subfunção, processo, fonte, natureza, fase, valor, empenho, diária, licitação e contrato.
+- Último teste: 2026-08-14, HTTP 200, envelope JSON válido, `total=0`.
+- Status: parcial; coletor raw-first integrado, sem publicação enquanto não houver registro real validado.

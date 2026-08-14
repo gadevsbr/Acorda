@@ -116,3 +116,12 @@ Consequências: cada decisão exige justificativa e registra revisor e horário.
 - Motivação: a fonte identifica vínculos por matrícula e nomes iguais não bastam para afirmar que se trata da mesma pessoa natural.
 - Alternativas: unir perfis por nome; aplicar decisões administrativas diretamente ao público; omitir remuneração individual.
 Consequências: homônimos aparecem separadamente na busca. Cada vínculo e pagamento aponta para sua própria proveniência; revisões substituídas continuam visíveis e ausências são descritas como inconclusivas.
+
+## DEC-014 — Despesas vazias permanecem apenas como evidência de coleta
+
+- Data: 2026-08-14
+- Status: Aceita
+- Decisão: integrar o contrato e a preservação bruta de despesas, mas adiar fornecedores e dados normalizados até a fonte entregar registros reais válidos.
+- Motivação: o OpenAPI documenta o schema, porém a resposta atual contém zero registros e não permite validar conteúdo municipal concreto.
+- Alternativas: fabricar dados públicos; declarar ausência de despesas; bloquear toda a integração.
+Consequências: coletor, checkpoint, saúde e alertas ficam operacionais; a Fase 4 permanece em andamento e a interface não conclui sem evidência.

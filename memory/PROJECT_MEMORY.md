@@ -12,7 +12,7 @@ O fluxo futuro obrigatório é fonte → registro bruto → validação → norm
 
 ## Estado atual
 
-Fase 0 publicada como `v0.1.0`. A Fase 1 foi publicada nas versões `v0.2.0` a `v0.2.2`. A estrutura organizacional saiu em `v0.3.0`, a camada bruta KBF em `v0.3.1`, pessoas/vínculos em `v0.4.0`, a folha mensal em `v0.5.0` e a revisão auditável de identidades em `v0.6.0`. A Fase 2 está concluída. A home conectada ao banco foi publicada em `v0.6.1`; busca e perfis públicos foram validados para `v0.7.0`. O cadastro público está desabilitado e o login é reservado ao painel administrativo.
+Fase 0 publicada como `v0.1.0`. A Fase 1 foi publicada nas versões `v0.2.0` a `v0.2.2`. A estrutura organizacional saiu em `v0.3.0`, a camada bruta KBF em `v0.3.1`, pessoas/vínculos em `v0.4.0`, a folha mensal em `v0.5.0` e a revisão auditável de identidades em `v0.6.0`. A Fase 2 está concluída. A home conectada ao banco foi publicada em `v0.6.1`; busca e perfis públicos foram publicados em `v0.7.0` após CI aprovada no commit `561b1ea`. O cadastro público está desabilitado e o login é reservado ao painel administrativo.
 
 Evidências atuais: 59 testes PHP com 342 asserções, Pint, ESLint, `vue-tsc`, build Vite, Composer audit e npm audit passaram. No Edge, a busca real por ABEL retornou nome e matrícula, e o perfil mostrou o vínculo, a competência 07/2026, valores e links oficiais. O Apache atual só encaminha essas rotas com `index.php` explícito, indicando configuração externa de rewrite pendente no Wamp; a aplicação e as rotas Laravel respondem corretamente. Todas as migrations passaram no MySQL 8.4.7. Docker ainda não está instalado e o Compose continua sem execução comprovada.
 

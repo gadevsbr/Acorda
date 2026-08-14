@@ -12,7 +12,7 @@ O fluxo futuro obrigatório é fonte → registro bruto → validação → norm
 
 ## Estado atual
 
-Fase 0 publicada como `v0.1.0`. O núcleo da Fase 1 foi publicado como `v0.2.0`; alertas deduplicados com e-mail opcional foram publicados em `v0.2.1`. Estão implementados fontes, saúde, registros brutos, execuções, checkpoints, cliente/coletor da folha e página `/fontes`. O cadastro público está desabilitado e o login será reservado ao painel administrativo. Ainda não existem pessoas ou folha normalizada.
+Fase 0 publicada como `v0.1.0`. O núcleo da Fase 1 foi publicado como `v0.2.0`; alertas deduplicados com e-mail opcional em `v0.2.1`; o mapa atualizado das fontes de folha em `v0.2.2`. Estão implementados fontes, saúde, registros brutos, execuções, checkpoints, cliente/coletor da folha e página `/fontes`. O cadastro público está desabilitado e o login será reservado ao painel administrativo. Ainda não existem pessoas ou folha normalizada.
 
 Evidências atuais: 38 testes PHP com 136 asserções, Pint, ESLint, `vue-tsc`, build Vite, CI GitHub e smoke HTTP 200 em `/` e `/fontes` passaram. As novas migrations passaram no MySQL 8.4.7. A coleta real controlada retornou HTTP 200 e envelope válido, mas `total=0`; foi corretamente persistida como `partial`, sem inferir ausência de servidores. Um alerta `unexpected_empty` foi persistido como aberto e sem e-mail configurado. O WampServer exigiu `COLLECTOR_CA_BUNDLE` local; a verificação TLS permaneceu habilitada. Docker ainda não está instalado e o Compose continua sem execução comprovada.
 

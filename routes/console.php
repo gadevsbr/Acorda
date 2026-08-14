@@ -22,3 +22,8 @@ Schedule::command('collect:kbf-active-employees')
     ->dailyAt('03:15')
     ->withoutOverlapping(120)
     ->onOneServer();
+
+Schedule::command('collect:kbf-payroll')
+    ->dailyAt('03:45')
+    ->withoutOverlapping(120)
+    ->onOneServer();

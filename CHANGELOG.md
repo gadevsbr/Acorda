@@ -4,6 +4,15 @@ O formato segue Keep a Changelog e o projeto usa versionamento semântico.
 
 ## [Unreleased]
 
+## [0.5.0] — 2026-08-14
+
+### Added
+
+- Coleta da remuneração KBF por competência, com 1.556 pagamentos reais de julho/2026.
+- Valores monetários em centavos inteiros, validação da equação bruto menos descontos igual a líquido e conferência integral da grade.
+- Revisões imutáveis encadeadas para correções da fonte e associação conservadora por matrícula.
+- Comando `collect:kbf-payroll` e agendamento diário da competência anterior.
+
 ## [0.4.0] — 2026-08-14
 
 ### Added

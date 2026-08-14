@@ -12,9 +12,9 @@ O fluxo futuro obrigatório é fonte → registro bruto → validação → norm
 
 ## Estado atual
 
-Fase 0 publicada como `v0.1.0`. A Fase 1 foi publicada nas versões `v0.2.0` a `v0.2.2`. A estrutura organizacional da Fase 2 saiu em `v0.3.0`; a preservação bruta dos servidores ativos KBF foi publicada em `v0.3.1`. Pessoas, cargos e vínculos foram normalizados e publicados em `v0.4.0`, após CI aprovado no commit `a37182a`. O cadastro público está desabilitado e o login será reservado ao painel administrativo. Remunerações ainda não foram integradas.
+Fase 0 publicada como `v0.1.0`. A Fase 1 foi publicada nas versões `v0.2.0` a `v0.2.2`. A estrutura organizacional saiu em `v0.3.0`, a camada bruta KBF em `v0.3.1` e pessoas/vínculos em `v0.4.0`. A folha mensal de julho/2026 está integrada localmente e aguarda validação completa e publicação. O cadastro público está desabilitado e o login será reservado ao painel administrativo.
 
-Evidências atuais: 48 testes PHP com 220 asserções, Pint, ESLint, `vue-tsc` e build Vite passaram. Composer e npm audit não encontraram vulnerabilidades conhecidas. Todas as migrations passaram no MySQL 8.4.7. As execuções KBF 7 e 8 normalizaram de forma idempotente 1.628 pessoas/vínculos e 203 cargos/funções, com zero inválidos. Existem 42 grupos de nomes repetidos preservados separadamente e zero ligações inferidas entre centro de custo e órgão. Docker ainda não está instalado e o Compose continua sem execução comprovada.
+Evidências atuais: 52 testes PHP com 238 asserções, Pint, ESLint, `vue-tsc`, build Vite, Composer audit e npm audit passaram. Todas as migrations, incluindo `payroll_records`, passaram no MySQL 8.4.7 e os quatro agendamentos estão registrados. As execuções KBF 7 e 8 normalizaram 1.628 pessoas/vínculos. As execuções 9 e 10 coletaram de forma idempotente 1.556 pagamentos de julho/2026, zero inválidos, 1.548 ligados a vínculos e totais oficiais exatos em centavos. Docker ainda não está instalado e o Compose continua sem execução comprovada.
 
 ## Restrições
 
@@ -25,4 +25,4 @@ Evidências atuais: 48 testes PHP com 220 asserções, Pint, ESLint, `vue-tsc` e
 
 ## Próximo passo
 
-Próximo passo da Fase 2: gerar candidatos revisáveis para os 42 grupos de nomes repetidos, sem fusão automática, e integrar a folha mensal pelo formulário 278 sem sobrescrever histórico.
+Próximo passo da Fase 2: gerar candidatos revisáveis para os 42 grupos de nomes repetidos, sem fusão automática. Depois, a Fase 3 pode publicar busca e perfis com proveniência e histórico de remuneração.

@@ -34,7 +34,8 @@ Observações: a documentação oficial lista os campos necessários. A resposta
 - Último teste: 2026-08-14, HTTP 200, 1.628 vínculos ativos, sete campos por linha
 - Campos: matrícula, nome, admissão, centro de custo, regime, cargo/função e jornada mensal
 - Status: operacional; servidores ativos preservados e normalizados
-- Observações: é o destino atual publicado pelo site oficial da Prefeitura. A fonte esteve temporariamente indisponível e depois voltou a responder. O cliente confere o total declarado e interrompe a coleta se o contrato da grade mudar. Matrícula é identidade do vínculo, não prova de identidade civil. Remuneração (`formID=278`) ainda não foi integrada.
+- Remuneração: competência julho/2026 integrada com 1.556 pagamentos; totais conferidos em centavos contra a grade oficial
+- Observações: é o destino atual publicado pelo site oficial da Prefeitura. A fonte esteve temporariamente indisponível e depois voltou a responder. O cliente confere o total declarado e interrompe a coleta se o contrato da grade mudar. Matrícula é identidade do vínculo, não prova de identidade civil. Oito pagamentos não encontraram vínculo ativo correspondente e permanecem sem associação.
 
 ## SoftHaas — Folha legada
 

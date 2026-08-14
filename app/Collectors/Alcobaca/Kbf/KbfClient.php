@@ -13,7 +13,10 @@ final class KbfClient
 
     private const GRID_ID = 818627;
 
-    public function __construct(private readonly KbfActiveEmployeeParser $parser) {}
+    public function __construct(
+        private readonly KbfActiveEmployeeParser $parser,
+        private readonly KbfPayrollParser $payrollParser,
+    ) {}
 
     public function activeEmployees(): KbfActiveEmployeeDataset
     {
@@ -55,6 +58,44 @@ final class KbfClient
         );
     }
 
+    public function payroll(int $month, int $year): KbfPayrollDataset
+    {
+        if ($month < 1 || $month > 12 || $year < 2000 || $year > 2100) {
+            throw new InvalidArgumentException('Competência KBF inválida.');
+        }
+
+        $base = rtrim((string) config('collectors.kbf.base_url'), '/').'/';
+        $this->assertAllowedUrl($base);
+        $startedAt = hrtime(true);
+        $form = $this->request()->get($base.'openform.do?action=openform&formID=278&popup=true&sys=PSM')->throw();
+        $cookie = $this->sessionCookie($form->header('Set-Cookie'));
+        $execution = $this->request($cookie)
+            ->withBody($this->payrollQueryBody($month, $year), 'application/x-www-form-urlencoded')
+            ->post($base.'executeRule.do')->throw();
+        $executionBody = $this->utf8($execution->body(), $execution->header('Content-Type'));
+        if (! preg_match('/setTotalRows\((\d+)\)/', $executionBody, $match)) {
+            throw new RuntimeException('O KBF não informou o total da folha mensal.');
+        }
+
+        $total = (int) $match[1];
+        $navigateUrl = $base.'navigate.do?'.http_build_query([
+            'sys' => 'PSM', 'formID' => 278, 'componentID' => 819875,
+            'action' => 'navigate', 'param' => 'first', 'inner' => 'true', 'gt' => $total,
+        ]);
+        $grid = $this->request($cookie)->get($navigateUrl)->throw();
+        $records = $this->payrollParser->parse($this->utf8($grid->body(), $grid->header('Content-Type')));
+        if (count($records) !== $total) {
+            throw new RuntimeException("O KBF informou {$total} pagamentos, mas a grade entregou ".count($records).'.');
+        }
+
+        return new KbfPayrollDataset(
+            records: $records, total: $total, month: $month, year: $year,
+            url: (string) config('collectors.kbf.payroll_official_url'), httpStatus: $grid->status(),
+            contentType: $grid->header('Content-Type'),
+            responseTimeMs: (int) round((hrtime(true) - $startedAt) / 1_000_000),
+        );
+    }
+
     private function request(?string $cookie = null): PendingRequest
     {
         $caBundle = config('collectors.ca_bundle');
@@ -84,6 +125,17 @@ final class KbfClient
             .'&F_8_826648=&F_9_826649=&F_10_826650=&F_11_826656=&F_12_826657=&F_13_828580=&F_14_828581=At%E9&F_15_828582='
             .'&F_16_828583=&F_17_828584=At%E9&F_18_828585=&F_19_828586=&F_20_818627=&F_21_826655=&F_22_828677=&F_23_828678='
             .'&F_24_826653=Gerando+aguarde...&F_25_826654=';
+    }
+
+    private function payrollQueryBody(int $month, int $year): string
+    {
+        return 'iframeId=RULEACORDA&sys=PSM&formID=278&action=executeRule&ruleName=Transpar%EAncia+-+Remunera%E7%E3o+-+Atualiza+grade'
+            .'&P_0='.$month.'&P_1='.$year.'&P_2=&P_3=&P_4=&P_5=&P_6=&P_7=&P_8=&P_9=&P_10=&P_11=&F_0_828123='
+            .'&F_2_828128=PREFEITURA+MUNICIPAL+DE+ALCOBACA&F_3_828127=13.761.721%2F0001-66&F_4_828126=PRACA+SAO+BERNARDO'
+            .'&F_5_828124=CENTRO&F_6_828125=330&F_7_819896=&F_8_819893=&F_9_819894=&F_10_819895=&F_11_827559='
+            .'&F_12_819877='.$month.'&F_13_819878='.$year.'&F_14_819879=&F_15_828593=&F_16_828592=At%E9&F_17_828591='
+            .'&F_18_828590=&F_19_828589=At%E9&F_20_828588=&F_21_828587=&F_22_819875=&F_23_819892=&F_24_828675='
+            .'&F_25_828676=&F_26_819995=Gerando+aguarde...&F_27_819996=';
     }
 
     private function utf8(string $body, ?string $contentType): string

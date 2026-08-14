@@ -23,6 +23,7 @@ return [
     'kbf' => [
         'base_url' => env('KBF_BASE_URL', 'https://folhadepagamento.kbfsistemas.com.br/pmalcobaca_portal'),
         'official_url' => 'https://folhadepagamento.kbfsistemas.com.br/pmalcobaca_portal/form.jsp?action=openform&formID=229&popup=true&sys=PSM',
+        'payroll_official_url' => 'https://folhadepagamento.kbfsistemas.com.br/pmalcobaca_portal/form.jsp?action=openform&formID=278&popup=true&sys=PSM',
         'allowed_hosts' => ['folhadepagamento.kbfsistemas.com.br'],
         'timeout_seconds' => (int) env('KBF_TIMEOUT_SECONDS', 120),
     ],

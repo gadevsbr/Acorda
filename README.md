@@ -4,7 +4,7 @@ Plataforma independente de transparência pública que torna dados oficiais de A
 
 ## Estado atual
 
-A Fase 1 possui o núcleo auditável de ingestão. Na Fase 2, 12 órgãos e 1.628 vínculos ativos foram coletados. Os vínculos estão normalizados em 1.628 identidades conservadoras por matrícula e 203 cargos/funções. Ainda não há perfis públicos de pessoas ou remunerações publicadas. Consulte [ROADMAP.md](ROADMAP.md).
+A Fase 1 possui o núcleo auditável de ingestão. Na Fase 2, 12 órgãos, 1.628 vínculos ativos e 1.556 pagamentos de julho/2026 foram coletados. Os vínculos estão normalizados em 1.628 identidades conservadoras por matrícula e 203 cargos/funções. Ainda não há perfis públicos de pessoas. Consulte [ROADMAP.md](ROADMAP.md).
 
 ## Stack
 
@@ -106,6 +106,14 @@ php artisan collect:kbf-active-employees
 ```
 
 O cliente mantém a sessão exigida pelo Webrun, confere o total declarado contra todas as linhas recebidas e falha fechado se o contrato da grade mudar. Após preservar o bruto, normaliza pessoa, cargo/função e vínculo. Cada matrícula gera uma identidade de fonte separada; nomes iguais nunca são fundidos automaticamente. O scheduler executa a coleta diariamente às 03:15.
+
+A remuneração mensal usa uma fonte lógica separada:
+
+```powershell
+php artisan collect:kbf-payroll --month=7 --year=2026
+```
+
+Valores monetários são guardados em centavos inteiros. Correções criam revisões encadeadas, sem sobrescrever o valor anterior. A competência padrão é o mês anterior e o scheduler repete a coleta diariamente às 03:45 para detectar correções da fonte.
 
 ## Segurança e contribuição
 

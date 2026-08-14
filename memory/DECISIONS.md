@@ -89,3 +89,12 @@ Consequências: IDs de formulário, fluxo e componentes ficam explícitos e test
 - Motivação: 42 grupos possuem nomes repetidos e a fonte não fornece identificador civil seguro para unir matrículas.
 - Alternativas: unir pessoas pelo nome; criar uma pessoa por linha/revisão; bloquear toda normalização.
 Consequências: homônimos e múltiplas matrículas não são fundidos indevidamente. Candidatos de identidade poderão sugerir revisões futuras, mas exigirão evidência adicional. Centro de custo só liga a órgão por correspondência exata e única; a execução atual produziu zero ligações.
+
+## DEC-011 — Folha mensal imutável e dinheiro em centavos
+
+- Data: 2026-08-14
+- Status: Aceita
+- Decisão: guardar valores monetários como inteiros em centavos e criar uma nova revisão normalizada quando a fonte corrigir um pagamento.
+- Motivação: evitar erro de ponto flutuante e preservar o histórico auditável sem sobrescrita.
+- Alternativas: decimal no banco com atualização destrutiva; guardar apenas o payload bruto; considerar a primeira coleta definitiva.
+Consequências: cada revisão aponta para o registro bruto e para a revisão substituída; somente `is_latest` muda. A equação bruto menos descontos igual a líquido e a competência solicitada são validadas antes da normalização.

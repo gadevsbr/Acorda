@@ -24,7 +24,7 @@ Legenda: `[ ]` pendente, `[~]` em andamento, `[x]` concluído com evidência.
 - [x] organizações e hierarquia com fonte oficial
 - [x] preservação bruta dos vínculos ativos do KBF (1.628 linhas)
 - [x] cargos, pessoas e vínculos funcionais com identidade conservadora por matrícula
-- [ ] folha mensal sem sobrescrita histórica
+- [x] folha mensal sem sobrescrita histórica (julho/2026, 1.556 pagamentos)
 - [ ] candidatos e revisão de resolução de identidade
 
 ## Fase 3 — Busca e perfil

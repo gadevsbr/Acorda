@@ -24,5 +24,6 @@ As conexões MySQL/MariaDB fixam o engine `InnoDB`. Isso garante transações e 
 - `people`: identidade conservadora de fonte, vinculada à matrícula e ao registro bruto mais recente;
 - `positions`: catálogo municipal deduplicado somente por nome normalizado exato;
 - `employments`: vínculo por matrícula, cargo, admissão, regime, centro de custo, jornada e estado corrente observado.
+- `payroll_records`: pagamento por competência e tipo de cálculo, valores em centavos, vínculo opcional e cadeia imutável de revisões.
 
 A unicidade de `raw_source_records` é `(source_id, external_id, checksum)`: repetir o mesmo payload é idempotente; mudar conteúdo cria uma revisão auditável. Exclusões de fonte são restritas quando há histórico bruto.

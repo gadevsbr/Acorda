@@ -4,6 +4,12 @@ O formato segue Keep a Changelog e o projeto usa versionamento semântico.
 
 ## [Unreleased]
 
+## [0.2.2] — 2026-08-14
+
+### Documentation
+
+- Registrada a descoberta do portal RH/KBF atual e do SoftHaas legado, sem assumir integração ou completude.
+
 ## [0.2.1] — 2026-08-14
 
 ### Added

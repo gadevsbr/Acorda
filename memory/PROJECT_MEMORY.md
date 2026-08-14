@@ -25,4 +25,4 @@ Evidências atuais: 38 testes PHP com 136 asserções, Pint, ESLint, `vue-tsc`, 
 
 ## Próximo passo
 
-Investigar competências históricas disponíveis sem varredura agressiva. Só iniciar a normalização da Fase 2 quando houver payload real ou fixture sanitizada derivada de resposta oficial não vazia.
+Bloqueio para a Fase 2: a API estruturada da folha responde vazia. O site oficial atual aponta servidores/remuneração para formulários KBF sem API documentada visível; o SoftHaas encontrado só lista 2020–2021 e é legado. Investigar chamadas estruturadas do KBF ou obter resposta oficial não vazia antes de normalizar. Não criar scraper HTML frágil nem fixture apresentada como oficial.

@@ -14,7 +14,7 @@ O fluxo futuro obrigatório é fonte → registro bruto → validação → norm
 
 Fase 0 implementada e validada localmente em 2026-08-14, aguardando release. O cadastro público está desabilitado e o login será reservado ao painel administrativo. Nenhum coletor ou dado público real foi implementado ainda.
 
-Evidências locais: 24 testes PHP com 60 asserções, Pint, ESLint, `vue-tsc`, build Vite, migrations limpas em SQLite e smoke HTTP 200 passaram. As migrations também passaram no MySQL 8.4.7 local e todas as tabelas foram confirmadas como InnoDB. Docker não está instalado na máquina atual, portanto o Compose foi criado, mas sua execução ainda não foi comprovada.
+Evidências locais: 24 testes PHP com 60 asserções, Pint, ESLint, `vue-tsc`, build Vite, migrations limpas em SQLite e smoke HTTP 200 passaram. As migrations também passaram no MySQL 8.4.7 local e todas as tabelas foram confirmadas como InnoDB. A primeira execução da CI no GitHub passou em 2026-08-14; actions foram atualizadas para a geração baseada em Node 24 após aviso de depreciação. Docker não está instalado na máquina atual, portanto o Compose foi criado, mas sua execução ainda não foi comprovada.
 
 ## Restrições
 

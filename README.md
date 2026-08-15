@@ -125,6 +125,8 @@ Fornecedores, contratos, licitações e fiscais usam `php artisan collect:prefei
 
 Após a preservação, `php artisan procurement:normalize` relaciona somente IDs oficiais. As consultas públicas ficam em `/contratos`, `/licitacoes` e `/fornecedores`; CPF de pessoa física é mascarado.
 
+Detalhes de contratos e licitações exibem documentos oficiais disponíveis. Licitações também apresentam seus lotes e valores estimados diretamente do payload bruto preservado, sem duplicar ou reinterpretar documentos.
+
 Possíveis identidades repetidas são geradas sem fusão automática:
 
 ```powershell

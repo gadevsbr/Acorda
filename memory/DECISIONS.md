@@ -143,3 +143,12 @@ Consequências: 2.709 registros reais estão auditáveis e prontos para normaliz
 - Motivação: nomes podem colidir e identificadores de pessoa física exigem minimização na interface.
 - Alternativas: relacionar por nome; exibir CPF integral; omitir fornecedores pessoa física.
 Consequências: relações ausentes permanecem nulas; CNPJ é exibido como publicado e CPF aparece mascarado.
+
+## DEC-017 — Documentos e lotes derivados do bruto preservado
+
+- Data: 2026-08-15
+- Status: Aceita
+- Decisão: apresentar anexos, instrumentos e lotes diretamente do payload bruto validado, aceitando somente URLs HTTPS para documentos.
+- Motivação: esses elementos são estruturas aninhadas da fonte e não precisam de identidade relacional própria no MVP.
+- Alternativas: duplicar tudo em tabelas; ocultar documentos; aceitar qualquer esquema de URL.
+Consequências: a proveniência permanece direta e alterações da fonte continuam versionadas por checksum.

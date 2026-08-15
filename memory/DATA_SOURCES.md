@@ -59,3 +59,4 @@ PNCP, TSE, Câmara de Alcobaça e TCM-BA permanecem planejados e não integrados
 - Último teste: 2026-08-14, HTTP 200; 361 fornecedores, 1.275 contratos, 1.073 licitações e zero fiscais.
 - Status: três datasets operacionais e fiscais parcial.
 - Privacidade: CPF de fornecedor pessoa física não será exposto integralmente na futura interface pública.
+- Documentos: anexos de contratos e instrumentos convocatórios de licitações são apresentados somente quando possuem URL HTTPS publicada; lotes permanecem atribuídos ao registro bruto.

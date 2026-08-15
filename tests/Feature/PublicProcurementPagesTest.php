@@ -16,13 +16,14 @@ class PublicProcurementPagesTest extends TestCase
     public function test_public_relations_use_official_ids_and_mask_cpf(): void
     {
         $this->raw('fornecedores', 10, ['id' => 10, 'nome' => 'PESSOA FORNECEDORA', 'razao_social' => 'PESSOA FORNECEDORA', 'cpf_cnpj' => '123.456.789-01']);
-        $this->raw('licitacoes', 20, ['id' => 20, 'numero' => '20/2026', 'objeto' => 'OBJETO TESTE', 'modalidade_descricao' => 'PREGÃO', 'valor_estimado' => 500]);
-        $this->raw('contratos', 30, ['id' => 30, 'numero' => '30/2026', 'objeto' => 'OBJETO TESTE', 'contratada' => 'PESSOA FORNECEDORA', 'contratada_id' => 10, 'licitacao_id' => 20, 'valor' => 450]);
+        $this->raw('licitacoes', 20, ['id' => 20, 'numero' => '20/2026', 'objeto' => 'OBJETO TESTE', 'modalidade_descricao' => 'PREGÃO', 'valor_estimado' => 500, 'instrumentos_convocatorios' => [['filename' => 'EDITAL TESTE', 'tipo_titulo' => 'Edital', 'url' => 'https://pncp.gov.br/edital.pdf']], 'lotes' => [['numero_item' => 1, 'objeto' => 'ITEM TESTE', 'quantidade' => 2, 'unidade_medida' => 'UN', 'valor_total_estimado' => 500]]]);
+        $this->raw('contratos', 30, ['id' => 30, 'numero' => '30/2026', 'objeto' => 'OBJETO TESTE', 'contratada' => 'PESSOA FORNECEDORA', 'contratada_id' => 10, 'licitacao_id' => 20, 'valor' => 450, 'anexos' => [['filename' => 'CONTRATO TESTE', 'tipo_titulo' => 'Contrato', 'url' => 'https://pncp.gov.br/contrato.pdf']]]);
         app(NormalizeProcurementData::class)->handle();
 
         $this->get(route('suppliers.index', ['q' => 'PESSOA']))->assertOk()->assertInertia(fn (Assert $p) => $p->where('items.0.subtitle', '***.***.789-**'));
         $this->get('/contratos')->assertOk()->assertInertia(fn (Assert $p) => $p->where('items.0.valueCents', 45000));
-        $this->get('/contrato/302026-30')->assertOk()->assertInertia(fn (Assert $p) => $p->where('record.supplier.slug', 'pessoa-fornecedora-10')->where('record.procurement.slug', '202026-20'));
+        $this->get('/contrato/302026-30')->assertOk()->assertInertia(fn (Assert $p) => $p->where('record.supplier.slug', 'pessoa-fornecedora-10')->where('record.procurement.slug', '202026-20')->where('record.documents.0.name', 'CONTRATO TESTE')->where('record.sourceUrl', config('collectors.prefeitura.base_url').'/contratos/30'));
+        $this->get('/licitacao/202026-20')->assertOk()->assertInertia(fn (Assert $p) => $p->where('record.documents.0.name', 'EDITAL TESTE')->where('record.lots.0.estimatedCents', 50000));
     }
 
     private function raw(string $resource, int $id, array $payload): void

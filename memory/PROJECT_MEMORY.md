@@ -25,4 +25,4 @@ Evidências atuais: 64 testes PHP com 390 asserções e todos os gates passaram.
 
 ## Próximo passo
 
-Continuar a Fase 4 quando despesas e fiscais entregarem registros reais. Para compras já publicadas, ampliar filtros e documentos sem inferir relações ausentes.
+Continuar a Fase 4 quando despesas e fiscais entregarem registros reais. Para compras publicadas, ampliar filtros de período, órgão e situação sem inferir relações ausentes.

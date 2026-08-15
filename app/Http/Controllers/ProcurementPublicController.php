@@ -48,19 +48,42 @@ class ProcurementPublicController extends Controller
     {
         $procurement->load(['contracts.supplier', 'sourceRecord']);
 
-        return Inertia::render('Procurement/Show', ['kind' => 'procurement', 'record' => ['title' => $procurement->number ?: 'Licitação sem número', 'subtitle' => $procurement->modality, 'object' => $procurement->object, 'organization' => $procurement->organization_name, 'status' => $procurement->status, 'valueCents' => $procurement->estimated_cents, 'approvedCents' => $procurement->approved_cents, 'date' => $procurement->publication_date?->toDateString(), 'sourceUrl' => $procurement->sourceRecord->source_url, 'contracts' => $procurement->contracts->map(fn ($c) => $this->contractData($c))]]);
+        $payload = $procurement->sourceRecord->payload;
+
+        return Inertia::render('Procurement/Show', ['kind' => 'procurement', 'record' => ['title' => $procurement->number ?: 'Licitação sem número', 'subtitle' => $procurement->modality, 'object' => $procurement->object, 'organization' => $procurement->organization_name, 'status' => $procurement->status, 'valueCents' => $procurement->estimated_cents, 'approvedCents' => $procurement->approved_cents, 'date' => $procurement->publication_date?->toDateString(), 'sourceUrl' => $this->officialRecordUrl('licitacoes', $procurement->external_id), 'documents' => $this->documents($payload['instrumentos_convocatorios'] ?? []), 'lots' => collect($payload['lotes'] ?? [])->map(fn (array $lot): array => ['number' => $lot['numero_item'] ?? null, 'object' => $lot['objeto'] ?? null, 'status' => $lot['situacao'] ?? null, 'quantity' => $lot['quantidade'] ?? null, 'unit' => $lot['unidade_medida'] ?? null, 'estimatedCents' => $this->cents($lot['valor_total_estimado'] ?? null)]), 'contracts' => $procurement->contracts->map(fn ($c) => $this->contractData($c))]]);
     }
 
     public function supplier(Supplier $supplier): Response
     {
         $supplier->load(['contracts.procurement', 'sourceRecord']);
 
-        return Inertia::render('Procurement/Show', ['kind' => 'supplier', 'record' => ['title' => $supplier->name, 'subtitle' => $this->publicTaxId($supplier->tax_identifier, $supplier->tax_identifier_type), 'sourceUrl' => $supplier->sourceRecord->source_url, 'contracts' => $supplier->contracts->map(fn ($c) => $this->contractData($c))]]);
+        return Inertia::render('Procurement/Show', ['kind' => 'supplier', 'record' => ['title' => $supplier->name, 'subtitle' => $this->publicTaxId($supplier->tax_identifier, $supplier->tax_identifier_type), 'sourceUrl' => $this->officialRecordUrl('fornecedores', $supplier->external_id), 'contracts' => $supplier->contracts->map(fn ($c) => $this->contractData($c))]]);
     }
 
     private function contractData(Contract $c): array
     {
-        return ['slug' => $c->public_slug, 'title' => $c->number ?: 'Contrato sem número', 'subtitle' => $c->supplier_name, 'object' => $c->object, 'organization' => $c->organization_name, 'status' => $c->status, 'valueCents' => $c->value_cents, 'date' => $c->signature_date?->toDateString(), 'supplier' => $c->supplier ? ['name' => $c->supplier->name, 'slug' => $c->supplier->public_slug] : null, 'procurement' => $c->procurement ? ['number' => $c->procurement->number, 'slug' => $c->procurement->public_slug] : null, 'sourceUrl' => $c->sourceRecord?->source_url];
+        return ['slug' => $c->public_slug, 'title' => $c->number ?: 'Contrato sem número', 'subtitle' => $c->supplier_name, 'object' => $c->object, 'organization' => $c->organization_name, 'status' => $c->status, 'valueCents' => $c->value_cents, 'date' => $c->signature_date?->toDateString(), 'supplier' => $c->supplier ? ['name' => $c->supplier->name, 'slug' => $c->supplier->public_slug] : null, 'procurement' => $c->procurement ? ['number' => $c->procurement->number, 'slug' => $c->procurement->public_slug] : null, 'sourceUrl' => $this->officialRecordUrl('contratos', $c->external_id), 'documents' => $this->documents($c->sourceRecord?->payload['anexos'] ?? [])];
+    }
+
+    private function officialRecordUrl(string $resource, string $id): string
+    {
+        return rtrim((string) config('collectors.prefeitura.base_url'), '/').'/'.$resource.'/'.$id;
+    }
+
+    private function documents(array $items): array
+    {
+        return collect($items)->filter(function (mixed $item): bool {
+            if (! is_array($item) || ! isset($item['url']) || ! str_starts_with((string) $item['url'], 'https://')) {
+                return false;
+            }
+
+            return in_array(strtolower((string) parse_url((string) $item['url'], PHP_URL_HOST)), ['pncp.gov.br', 'www.acessoinformacao.com.br'], true);
+        })->map(fn (array $item): array => ['name' => $item['filename'] ?? $item['tipo_titulo'] ?? 'Documento', 'type' => $item['tipo_titulo'] ?? null, 'url' => $item['url']])->values()->all();
+    }
+
+    private function cents(mixed $value): ?int
+    {
+        return is_numeric($value) ? (int) round((float) $value * 100) : null;
     }
 
     private function publicTaxId(?string $value, ?string $type): ?string

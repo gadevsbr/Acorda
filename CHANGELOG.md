@@ -4,6 +4,14 @@ O formato segue Keep a Changelog e o projeto usa versionamento semântico.
 
 ## [Unreleased]
 
+## [0.11.0] — 2026-08-15
+
+### Added
+
+- Documentos oficiais nos perfis de contratos e licitações.
+- Lotes de licitação com item, objeto, quantidade, unidade e valor estimado.
+- Links de proveniência apontando para o registro específico da API oficial.
+
 ## [0.10.0] — 2026-08-14
 
 ### Added

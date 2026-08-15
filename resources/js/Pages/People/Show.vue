@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { Head, Link } from '@inertiajs/vue3';
+import PlainLanguageLegend from '@/Components/PlainLanguageLegend.vue';
 
 interface Provenance { sourceName: string; officialUrl: string; fetchedAt: string | null; validationStatus: string }
 interface Employment { registration: string; position: string | null; organization: { name: string; slug: string } | null; costCenter: string | null; regime: string; monthlyWorkload: string | null; admissionDate: string | null; isCurrent: boolean; provenance: Provenance }
@@ -27,7 +28,7 @@ const dateTime = (value: string | null): string => value ? new Intl.DateTimeForm
                 </article>
             </div></section>
 
-            <section class="mt-12"><h2 class="text-2xl font-black">Remuneração e revisões</h2><p class="mt-2 text-sm leading-6 text-slate-600">Valores reproduzem a fonte por competência. Registros substituídos permanecem visíveis para preservar o histórico.</p>
+            <section class="mt-12"><h2 class="text-2xl font-black">Pagamentos</h2><p class="mt-2 text-sm leading-6 text-slate-600">Os valores são organizados pelo mês a que pertencem. Correções antigas continuam visíveis no histórico.</p><PlainLanguageLegend type="people" class="mt-5" />
                 <div v-if="person.payroll.length" class="mt-5 overflow-x-auto border border-slate-200 bg-white"><table class="w-full min-w-[760px] text-left text-sm"><thead class="bg-slate-950 text-white"><tr><th class="p-4">Competência</th><th class="p-4">Tipo</th><th class="p-4 text-right">Bruto</th><th class="p-4 text-right">Descontos</th><th class="p-4 text-right">Líquido</th><th class="p-4">Versão</th><th class="p-4">Fonte</th></tr></thead><tbody><tr v-for="record in person.payroll" :key="record.id" class="border-t border-slate-200"><td class="p-4 font-bold">{{ record.reference }}</td><td class="p-4">{{ record.calculationType }}</td><td class="p-4 text-right">{{ money(record.grossCents) }}</td><td class="p-4 text-right">{{ money(record.deductionsCents) }}</td><td class="p-4 text-right font-bold">{{ money(record.netCents) }}</td><td class="p-4"><span :class="record.isLatest ? 'text-teal-800' : 'text-slate-500'" class="font-bold">{{ record.isLatest ? (record.supersedesId ? 'Atual corrigida' : 'Atual') : 'Substituída' }}</span></td><td class="p-4"><a :href="record.provenance.officialUrl" target="_blank" rel="noopener noreferrer" class="font-bold text-teal-800 underline">Oficial</a><span class="mt-1 block text-xs text-slate-500">{{ dateTime(record.provenance.fetchedAt) }}</span></td></tr></tbody></table></div>
                 <p v-else class="mt-5 border-l-4 border-amber-400 bg-white p-5">Nenhum pagamento foi associado com segurança a esta matrícula. Isso não comprova ausência de pagamento na fonte.</p>
             </section>

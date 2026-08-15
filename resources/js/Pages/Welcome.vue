@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { Head, Link } from '@inertiajs/vue3';
+import PlainLanguageLegend from '@/Components/PlainLanguageLegend.vue';
 
 const props = defineProps<{
     canLogin: boolean;
@@ -20,15 +21,15 @@ const hasPublicData = props.stats.organizations > 0 || props.stats.people > 0 ||
 
         <main>
             <section class="border-b border-slate-200 bg-slate-950 text-white"><div class="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-24">
-                <p class="mb-5 text-sm font-bold uppercase tracking-[0.18em] text-amber-300">Plataforma independente de transparência pública</p>
-                <h1 class="max-w-4xl text-4xl font-black leading-tight tracking-tight sm:text-6xl">Informação pública de Alcobaça, com fonte e contexto.</h1>
-                <p class="mt-7 max-w-3xl text-lg leading-8 text-slate-300">Dados oficiais organizados de forma simples, rastreável e neutra. Cada conjunto informa sua origem e condição de coleta.</p>
+                <p class="mb-5 text-sm font-bold uppercase tracking-[0.18em] text-amber-300">Transparência pública de Alcobaça</p>
+                <h1 class="max-w-4xl text-4xl font-black leading-tight tracking-tight sm:text-6xl">Encontre pessoas, pagamentos, contratos e licitações.</h1>
+                <p class="mt-7 max-w-3xl text-lg leading-8 text-slate-300">Organizamos informações publicadas por fontes oficiais e mostramos de onde cada dado veio.</p>
                 <div v-if="hasPublicData" class="mt-10 flex flex-wrap gap-3"><Link :href="route('people.index')" class="rounded bg-amber-400 px-5 py-3 font-bold text-slate-950 hover:bg-amber-300">Buscar pessoa</Link><Link :href="route('contracts.index')" class="rounded border border-white/30 px-5 py-3 font-bold text-white hover:bg-white/10">Ver contratos</Link><Link :href="route('procurements.index')" class="rounded border border-white/30 px-5 py-3 font-bold text-white hover:bg-white/10">Ver licitações</Link><Link :href="route('organizations.index')" class="rounded border border-white/30 px-5 py-3 font-bold text-white hover:bg-white/10">Órgãos públicos</Link></div>
                 <div v-else class="mt-10 max-w-3xl border-l-4 border-amber-400 bg-white/10 px-6 py-5" role="status"><p class="font-bold">Esta instalação ainda não coletou dados.</p><p class="mt-1 text-sm leading-6 text-slate-300">Execute as migrations e os coletores documentados antes de publicar informações.</p></div>
             </div></section>
 
             <section v-if="hasPublicData" class="mx-auto max-w-6xl px-5 py-14 sm:px-8">
-                <div class="mb-8 max-w-2xl"><p class="text-sm font-black uppercase tracking-widest text-teal-700">Base disponível</p><h2 class="mt-3 text-3xl font-black">O que já foi coletado</h2><p class="mt-3 leading-7 text-slate-600">Contagens calculadas diretamente do banco desta instalação.</p></div>
+                <div class="mb-8 max-w-2xl"><p class="text-sm font-black uppercase tracking-widest text-teal-700">Resumo da base</p><h2 class="mt-3 text-3xl font-black">Informações disponíveis agora</h2><p class="mt-3 leading-7 text-slate-600">Estes números são atualizados a partir dos dados guardados nesta instalação.</p></div>
                 <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
                     <article class="rounded-xl border border-slate-200 bg-white p-5"><strong class="text-3xl">{{ number.format(stats.organizations) }}</strong><p class="mt-2 text-sm text-slate-600">órgãos públicos atuais</p></article>
                     <article class="rounded-xl border border-slate-200 bg-white p-5"><strong class="text-3xl">{{ number.format(stats.activeEmployments) }}</strong><p class="mt-2 text-sm text-slate-600">vínculos funcionais atuais</p></article>
@@ -36,7 +37,8 @@ const hasPublicData = props.stats.organizations > 0 || props.stats.people > 0 ||
                     <article class="rounded-xl border border-slate-200 bg-white p-5"><strong class="text-3xl">{{ number.format(stats.payrollRecords) }}</strong><p class="mt-2 text-sm text-slate-600">pagamentos em {{ stats.payrollReference ?? 'competência não informada' }}</p></article>
                 </div>
                 <div v-if="stats.payrollRecords > 0" class="mt-4 rounded-xl bg-teal-900 p-6 text-white"><p class="text-sm font-bold uppercase tracking-widest text-teal-200">Total líquido da competência {{ stats.payrollReference }}</p><strong class="mt-2 block text-3xl">{{ money.format(stats.netPayrollCents / 100) }}</strong><p class="mt-2 text-sm text-teal-100">Valor agregado da versão mais recente. Consulte valores individuais pela busca de pessoas.</p></div>
-                <p class="mt-6 text-sm text-slate-600">Fontes operacionais: {{ stats.operationalSources }}. Fontes parciais: {{ stats.partialSources }}. Uma fonte parcial não comprova ausência do fato.</p>
+                <p class="mt-6 text-sm text-slate-600"><strong>{{ stats.operationalSources }}</strong> fonte(s) disponíveis e <strong>{{ stats.partialSources }}</strong> parcial(is). “Parcial” significa que a consulta veio vazia, incompleta ou com alguma limitação.</p>
+                <PlainLanguageLegend type="general" class="mt-8" />
             </section>
 
             <section class="border-t border-slate-200 bg-white"><div class="mx-auto grid max-w-6xl gap-10 px-5 py-14 sm:px-8 md:grid-cols-3">

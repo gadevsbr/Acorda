@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { Head, Link } from '@inertiajs/vue3';
+import PlainLanguageLegend from '@/Components/PlainLanguageLegend.vue';
 
 type SourceStatus =
     | 'operational'
@@ -25,7 +26,7 @@ interface PublicSource {
 defineProps<{ sources: PublicSource[] }>();
 
 const statusLabels: Record<SourceStatus, string> = {
-    operational: 'Operacional',
+    operational: 'Disponível',
     partial: 'Parcial',
     unavailable: 'Temporariamente indisponível',
     schema_changed: 'Formato alterado',
@@ -59,7 +60,7 @@ const formatDate = (value: string | null): string => {
     <div class="min-h-screen bg-stone-50 text-slate-950">
         <header class="border-b border-slate-200 bg-white">
             <div class="mx-auto flex max-w-5xl items-center justify-between px-5 py-5 sm:px-8">
-                <Link href="/" class="text-xl font-black tracking-tight">
+                <Link :href="route('home')" class="text-xl font-black tracking-tight">
                     Acorda <span class="text-teal-700">Alcobaça</span>
                 </Link>
                 <span class="text-sm font-semibold text-slate-500">Transparência da plataforma</span>
@@ -74,6 +75,8 @@ const formatDate = (value: string | null): string => {
                 Uma resposta vazia ou uma fonte indisponível nunca é apresentada como prova de que
                 determinado fato não existe.
             </p>
+
+            <PlainLanguageLegend type="sources" class="mt-8" />
 
             <div v-if="sources.length" class="mt-10 space-y-5">
                 <article
@@ -100,8 +103,8 @@ const formatDate = (value: string | null): string => {
                             <dd class="mt-1 font-semibold">{{ formatDate(source.lastCheckedAt) }}</dd>
                         </div>
                         <div>
-                            <dt class="text-xs font-bold uppercase tracking-wide text-slate-500">HTTP</dt>
-                            <dd class="mt-1 font-semibold">{{ source.httpStatus ?? 'Não disponível' }}</dd>
+                            <dt class="text-xs font-bold uppercase tracking-wide text-slate-500">Resposta da fonte</dt>
+                            <dd class="mt-1 font-semibold">{{ source.httpStatus ? `Recebida (código ${source.httpStatus})` : 'Não recebida' }}</dd>
                         </div>
                         <div>
                             <dt class="text-xs font-bold uppercase tracking-wide text-slate-500">Registros informados</dt>

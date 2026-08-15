@@ -2,6 +2,8 @@
 
 Plataforma independente de transparência pública que torna dados oficiais de Alcobaça (BA) pesquisáveis, compreensíveis e auditáveis. O produto apresenta fatos, contexto, fonte e data de atualização, sem avaliações político-partidárias.
 
+A interface usa legendas curtas para explicar termos públicos e financeiros. Estados vazios são descritos como ausência de resultado na base, nunca como prova de inexistência.
+
 ## Estado atual
 
 A Fase 3 está completa: além do núcleo auditável de ingestão e dos dados da Fase 2, a aplicação oferece busca pública e perfis funcionais com vínculos, remuneração, revisões e fonte oficial. A base validada possui 12 órgãos, 1.628 vínculos ativos, 203 cargos/funções, 1.556 pagamentos de julho/2026 e 42 candidatos revisáveis de identidade. Consulte [ROADMAP.md](ROADMAP.md).

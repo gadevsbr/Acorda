@@ -4,6 +4,15 @@ O formato segue Keep a Changelog e o projeto usa versionamento semântico.
 
 ## [Unreleased]
 
+## [0.12.0] — 2026-08-15
+
+### Changed
+
+- Home reescrita para começar pelas consultas disponíveis e usar linguagem direta.
+- Legendas em linguagem simples adicionadas a pessoas, pagamentos, compras públicas, órgãos e fontes.
+- Estados técnicos traduzidos e instruções, datas, contagens e mensagens sem resultado simplificadas.
+- Navegação pública ajustada para telas pequenas e instalações em subdiretório.
+
 ## [0.11.0] — 2026-08-15
 
 ### Added

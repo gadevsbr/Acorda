@@ -152,3 +152,12 @@ Consequências: relações ausentes permanecem nulas; CNPJ é exibido como publi
 - Motivação: esses elementos são estruturas aninhadas da fonte e não precisam de identidade relacional própria no MVP.
 - Alternativas: duplicar tudo em tabelas; ocultar documentos; aceitar qualquer esquema de URL.
 Consequências: a proveniência permanece direta e alterações da fonte continuam versionadas por checksum.
+
+## DEC-018 — Linguagem simples junto ao dado
+
+- Data: 2026-08-15
+- Status: Aceita
+- Decisão: explicar termos financeiros, compras públicas e estados das fontes na própria tela em que aparecem.
+- Motivação: rastreabilidade sem explicação técnica não torna a informação compreensível para o cidadão.
+- Alternativas: glossário separado; manter rótulos técnicos; remover detalhes de proveniência.
+Consequências: a interface mantém precisão e fonte, mas apresenta primeiro o significado em linguagem comum.

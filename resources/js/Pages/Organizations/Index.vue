@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { Head, Link } from '@inertiajs/vue3';
+import PlainLanguageLegend from '@/Components/PlainLanguageLegend.vue';
 
 interface OrganizationSummary {
     slug: string;
@@ -30,7 +31,7 @@ const formatDate = (value: string | null): string =>
     <div class="min-h-screen bg-stone-50 text-slate-950">
         <header class="border-b border-slate-200 bg-white">
             <div class="mx-auto flex max-w-5xl items-center justify-between px-5 py-5 sm:px-8">
-                <Link href="/" class="text-xl font-black tracking-tight">Acorda <span class="text-teal-700">Alcobaça</span></Link>
+                <Link :href="route('home')" class="text-xl font-black tracking-tight">Acorda <span class="text-teal-700">Alcobaça</span></Link>
                 <Link :href="route('sources.index')" class="text-sm font-bold text-slate-600 hover:text-teal-800">Fontes</Link>
             </div>
         </header>
@@ -42,6 +43,8 @@ const formatDate = (value: string | null): string =>
                 Órgãos encontrados na fonte oficial monitorada. Responsáveis são exibidos somente na página do órgão e não são associados automaticamente a perfis de pessoas.
             </p>
             <p class="mt-3 text-sm text-slate-500">Atualização informada pela fonte: {{ formatDate(lastUpdatedAt) }}</p>
+
+            <PlainLanguageLegend type="general" class="mt-8" />
 
             <div class="mt-10 grid gap-4 sm:grid-cols-2">
                 <Link

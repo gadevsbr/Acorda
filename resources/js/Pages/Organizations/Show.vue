@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { Head, Link } from '@inertiajs/vue3';
+import PlainLanguageLegend from '@/Components/PlainLanguageLegend.vue';
 
 interface OrganizationSummary {
     slug: string;
@@ -42,7 +43,7 @@ const formatDateTime = (value: string | null): string =>
     <div class="min-h-screen bg-stone-50 text-slate-950">
         <header class="border-b border-slate-200 bg-white">
             <div class="mx-auto flex max-w-4xl items-center justify-between px-5 py-5 sm:px-8">
-                <Link href="/" class="text-xl font-black tracking-tight">Acorda <span class="text-teal-700">Alcobaça</span></Link>
+                <Link :href="route('home')" class="text-xl font-black tracking-tight">Acorda <span class="text-teal-700">Alcobaça</span></Link>
                 <Link :href="route('organizations.index')" class="text-sm font-bold text-slate-600 hover:text-teal-800">Todos os órgãos</Link>
             </div>
         </header>
@@ -53,6 +54,7 @@ const formatDateTime = (value: string | null): string =>
                 <span aria-hidden="true"> / </span>
             </nav>
             <h1 class="mt-3 text-4xl font-black tracking-tight sm:text-5xl">{{ organization.name }}</h1>
+            <PlainLanguageLegend type="general" class="mt-7" />
 
             <section class="mt-10 border border-slate-200 bg-white p-6 sm:p-8">
                 <h2 class="text-xl font-bold">Informações publicadas</h2>

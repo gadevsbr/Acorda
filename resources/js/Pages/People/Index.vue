@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { Head, Link, router } from '@inertiajs/vue3';
 import { ref } from 'vue';
+import PlainLanguageLegend from '@/Components/PlainLanguageLegend.vue';
 
 interface Result { slug: string; name: string; registration: string; position: string | null; regime: string | null; isCurrent: boolean }
 const props = defineProps<{ query: string; minimumQueryLength: number; results: Result[] }>();
@@ -16,6 +17,7 @@ const submit = (): void => router.get(route('people.index'), { q: search.value }
             <p class="text-sm font-black uppercase tracking-widest text-teal-700">Servidores públicos</p>
             <h1 class="mt-3 text-4xl font-black tracking-tight">Buscar pessoa</h1>
             <p class="mt-4 max-w-3xl leading-7 text-slate-600">Consulte nomes ou matrículas publicados nas fontes oficiais. Pessoas com o mesmo nome permanecem em registros separados por matrícula.</p>
+            <PlainLanguageLegend type="general" class="mt-7 max-w-3xl" />
             <form class="mt-8 flex max-w-3xl gap-3" role="search" @submit.prevent="submit">
                 <label for="people-search" class="sr-only">Nome ou matrícula</label>
                 <input id="people-search" v-model="search" type="search" :minlength="minimumQueryLength" required placeholder="Digite ao menos 2 caracteres" class="min-w-0 flex-1 rounded border border-slate-300 bg-white px-4 py-3 focus:border-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-200" />
